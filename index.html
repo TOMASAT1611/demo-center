@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Learning Portfolio — INTEGRA by Karina Núñez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E3A3D;
+    --ink-soft:#5C6670;
+    --paper:#FAF7F0;
+    --paper-dim:#EFE9DA;
+    --signal:#5BAFA0;
+    --tape:#5BAFA0;
+    --gold:#C9A227;
+    --line: rgba(250,247,240,0.16);
+    --line-dark: rgba(30,58,61,0.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--signal); color:var(--paper); }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 3px rgba(91,175,160,0.18);
+    flex:none;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- NAV ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,23,28,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    color:var(--paper);
+  }
+  .brandmark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:.08em;
+  }
+  .brandmark .rec{
+    width:8px; height:8px; border-radius:50%; background:var(--signal);
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  .navlinks{ display:flex; gap:28px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; }
+  .navlinks a{ color:rgba(237,231,220,0.6); transition:color .2s; white-space:nowrap; }
+  .navlinks a:hover{ color:var(--paper); }
+  @media (max-width:880px){ .navlinks{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 18% -10%, rgba(91,175,160,0.16), transparent 60%),
+      var(--ink);
+    color:var(--paper);
+    padding:120px 28px 100px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(237,231,220,0.035) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(237,231,220,0.035) 40px);
+    pointer-events:none;
+  }
+  .hero-inner{ max-width:1180px; margin:0 auto; position:relative; }
+  .hero-frame{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:rgba(237,231,220,0.4);
+    display:flex; justify-content:space-between;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:10px 0; margin-bottom:64px;
+    letter-spacing:.08em;
+  }
+  .hero h1{
+    font-size:clamp(48px, 8vw, 96px);
+    line-height:0.98;
+    margin:28px 0 8px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--signal); font-weight:500; }
+  .hero p.sub{
+    font-size:19px; color:rgba(237,231,220,0.72);
+    max-width:480px; margin:24px 0 48px;
+    line-height:1.5;
+  }
+  .hero-footer{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
+    margin-top:8px;
+  }
+  .author-line{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:rgba(237,231,220,0.55);
+    letter-spacing:.05em;
+  }
+  .author-line strong{ color:var(--paper); font-weight:500; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--signal); color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    padding:16px 28px;
+    border-radius:var(--radius);
+    transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:0 0 0 1px rgba(20,23,28,0.0);
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px -10px rgba(91,175,160,0.5); }
+  .btn-ghost{
+    background:transparent; color:var(--paper);
+    box-shadow:inset 0 0 0 1px rgba(237,231,220,0.35);
+  }
+  .btn-ghost:hover{ box-shadow:inset 0 0 0 1px var(--paper); }
+  .btn-small{ padding:11px 18px; font-size:11.5px; }
+
+  /* ---------- MENU (4 cards) ---------- */
+  .menu-section{ padding:88px 28px; max-width:1180px; margin:0 auto; }
+  .section-head{ margin-bottom:44px; max-width:560px; }
+  .section-head h2{ font-size:clamp(28px,4vw,40px); margin-top:14px; }
+  .section-head p{ color:var(--ink-soft); margin-top:14px; font-size:15.5px; line-height:1.6; }
+
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  @media (max-width:760px){ .menu-grid{ grid-template-columns:1fr; } }
+
+  .menu-card{
+    background:var(--paper);
+    padding:40px 36px;
+    display:flex; flex-direction:column; gap:18px;
+    min-height:220px;
+    transition:background .2s ease;
+    position:relative;
+  }
+  .menu-card:hover{ background:var(--paper-dim); }
+  .menu-card .icon{ width:34px; height:34px; color:var(--ink); }
+  .menu-card h3{ font-size:23px; }
+  .menu-card ul{ list-style:none; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); display:flex; flex-wrap:wrap; gap:8px 14px; }
+  .menu-card ul li::before{ content:"·"; margin-right:6px; color:var(--signal); }
+  .menu-card .go{
+    margin-top:auto;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink); display:flex; align-items:center; gap:8px;
+  }
+  .menu-card .go .arrow{ color:var(--signal); transition:transform .2s; }
+  .menu-card:hover .go .arrow{ transform:translateX(4px); }
+
+  /* ---------- DEMO SECTIONS ---------- */
+  .demo-section{
+    padding:96px 28px;
+    border-top:1px solid var(--line-dark);
+    scroll-margin-top:70px;
+  }
+  .demo-section.dark{ background:var(--ink); color:var(--paper); }
+  .demo-section.dark .section-head p{ color:rgba(237,231,220,0.62); }
+  .demo-section.dark .eyebrow{ color:var(--signal); }
+  .demo-section-inner{ max-width:1180px; margin:0 auto; }
+
+  .reel-counter{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:120px; font-weight:600; line-height:1;
+    color:var(--line-dark);
+    position:absolute; top:0; right:28px;
+    pointer-events:none; user-select:none;
+  }
+  .demo-section{ position:relative; overflow:hidden; }
+
+  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:8px; }
+  @media (max-width:900px){ .card-grid{ grid-template-columns:1fr; } }
+  @media (max-width:760px){ .featured-tutor{ grid-template-columns:1fr !important; } }
+  .card-grid.two{ grid-template-columns:repeat(2,1fr); }
+  @media (max-width:760px){ .card-grid.two{ grid-template-columns:1fr; } }
+
+  .demo-card{ display:flex; flex-direction:column; }
+  .frame{
+    aspect-ratio:16/10;
+    background:
+      linear-gradient(135deg, rgba(20,23,28,0.05), rgba(20,23,28,0.02)),
+      repeating-linear-gradient(45deg, rgba(20,23,28,0.04) 0 1px, transparent 1px 14px);
+    border:1px solid var(--line-dark);
+    position:relative;
+    margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .dark .frame{
+    background:
+      linear-gradient(135deg, rgba(237,231,220,0.06), rgba(237,231,220,0.02)),
+      repeating-linear-gradient(45deg, rgba(237,231,220,0.05) 0 1px, transparent 1px 14px);
+    border-color:var(--line);
+  }
+  .frame::before, .frame::after,
+  .frame .c2::before, .frame .c2::after{
+    content:""; position:absolute; width:18px; height:18px;
+    border-color:var(--signal); border-style:solid; opacity:.85;
+    z-index:1;
+  }
+  .frame::before{ top:10px; left:10px; border-width:2px 0 0 2px; }
+  .frame::after{ bottom:10px; right:10px; border-width:0 2px 2px 0; }
+  .frame .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
+    letter-spacing:.08em; text-transform:uppercase;
+  }
+  .dark .frame .label{ color:rgba(237,231,220,0.45); }
+  .badge-rec{
+    position:absolute; top:10px; left:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink); background:var(--signal);
+    padding:3px 8px;
+  }
+  .frame .playdot{
+    position:absolute; top:14px; right:14px;
+    width:8px; height:8px; border-radius:50%; background:var(--signal);
+  }
+
+  .demo-card h4{ font-family:'Fraunces', serif; font-weight:600; font-size:20px; margin-bottom:6px; }
+  .demo-card .meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); letter-spacing:.05em; text-transform:uppercase; margin-bottom:10px;}
+  .dark .demo-card .meta{ color:rgba(237,231,220,0.5); }
+  .demo-card .desc{ font-size:14px; color:var(--ink-soft); line-height:1.55; margin-bottom:14px; }
+  .dark .demo-card .desc{ color:rgba(237,231,220,0.65); }
+  .checklist{ list-style:none; margin-bottom:18px; }
+  .checklist li{ font-size:13.5px; padding:4px 0; display:flex; gap:9px; align-items:flex-start; }
+  .checklist li::before{ content:"✓"; color:var(--tape); font-weight:700; flex:none; }
+
+  .demo-link{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 16px;
+    border:1px solid var(--ink);
+    width:fit-content;
+    transition:background .18s, color .18s;
+  }
+  .demo-link:hover{ background:var(--ink); color:var(--paper); }
+  .dark .demo-link{ border-color:var(--paper); }
+  .dark .demo-link:hover{ background:var(--paper); color:var(--ink); }
+
+  .placeholder-flag{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gold);
+    margin-top:6px; letter-spacing:.04em;
+  }
+
+  /* localization rows */
+  .loc-list{ display:flex; flex-direction:column; max-width:640px; margin-top:12px; }
+  .loc-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 4px; border-bottom:1px solid var(--line);
+  }
+  .loc-row .lang{ display:flex; align-items:center; gap:16px; }
+  .loc-row .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(237,231,220,0.4); }
+  .loc-row h4{ font-family:'Fraunces', serif; font-size:21px; }
+
+  /* footer */
+  footer{ background:var(--ink); color:var(--paper); padding:64px 28px 36px; }
+  .footer-inner{ max-width:1180px; margin:0 auto; }
+  .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; border-bottom:1px solid var(--line); padding-bottom:40px; margin-bottom:24px; }
+  .footer-services ul{ list-style:none; columns:2; gap:24px; font-size:13.5px; }
+  .footer-services li{ padding:5px 0; display:flex; gap:9px; }
+  .footer-services li::before{ content:"✓"; color:var(--tape); font-weight:700; }
+  .footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(237,231,220,0.4); letter-spacing:.05em; }
+
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brandmark"><span class="rec"></span> INTEGRA — DEMO CENTER</div>
+    <div class="navlinks">
+      <a href="#elearning">E-Learning</a>
+      <a href="#ia">IA Educativa</a>
+      <a href="#localizacion">Localización</a>
+      <a href="#audiovisual">Audiovisual</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO / PORTADA ===================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-frame">
+      <span>DEMO N.º 01 / 04</span>
+      <span>FORMATO — PORTFOLIO</span>
+      <span>2026</span>
+    </div>
+    <div class="eyebrow"><span class="dot"></span> DIGITAL LEARNING PORTFOLIO</div>
+    <h1>Digital Learning<br><em>Portfolio.</em></h1>
+    <p class="sub">Soluciones para e-learning, inteligencia artificial educativa y producción audiovisual — experiencias de aprendizaje digital en un solo lugar.</p>
+    <p style="font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:rgba(237,231,220,0.5); letter-spacing:.04em; max-width:480px; margin-bottom:48px;">INTEGRA está dirigida por Karina Núñez — psicóloga, docente universitaria y diseñadora instruccional especializada en experiencias de aprendizaje potenciadas con IA.</p>
+    <div class="hero-footer">
+      <a href="#menu" class="btn">▶ Ver demos</a>
+      <div class="author-line">Diseñado y producido por <strong>INTEGRA by Karina Núñez</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MENÚ — 4 TARJETAS ===================== -->
+<section class="menu-section" id="menu">
+  <div class="section-head">
+    <div class="eyebrow"><span class="dot"></span> ÍNDICE</div>
+    <h2>Cuatro líneas de trabajo.</h2>
+    <p>Cada bloque agrupa demos reales, listos para explorar. Elegí por dónde empezar.</p>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:48px; padding:28px 0 44px; border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); margin-bottom:48px;">
+    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">3</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Herramientas de autor</div></div>
+    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">5</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Agentes IA</div></div>
+    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">3</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Idiomas</div></div>
+    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">15+</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Proyectos demo</div></div>
+  </div>
+
+  <div class="menu-grid">
+    <a href="#elearning" class="menu-card">
+      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">01</div>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+      <h3>Desarrollo e-learning</h3>
+      <ul><li>Rise</li><li>Storyline</li><li>iSpring</li></ul>
+      <span class="go">Ver demos <span class="arrow">→</span></span>
+    </a>
+
+    <a href="#ia" class="menu-card">
+      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">02</div>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="1.6"/><circle cx="20" cy="6" r="1.6"/><circle cx="4" cy="18" r="1.6"/><circle cx="20" cy="18" r="1.6"/><path d="M9.8 10.2 5.3 7M14.2 10.2 18.7 7M9.8 13.8 5.3 17M14.2 13.8 18.7 17"/></svg>
+      <h3>IA educativa</h3>
+      <ul><li>Tutor IA</li><li>Agentes IA</li><li>Avatares</li></ul>
+      <span class="go">Ver demos <span class="arrow">→</span></span>
+    </a>
+
+    <a href="#localizacion" class="menu-card">
+      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">03</div>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+      <h3>Localización</h3>
+      <ul><li>ES</li><li>IT</li><li>EN</li></ul>
+      <span class="go">Ver demo <span class="arrow">→</span></span>
+    </a>
+
+    <a href="#audiovisual" class="menu-card">
+      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">04</div>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="13" height="12" rx="1.2"/><path d="m16 10 5-3v10l-5-3"/></svg>
+      <h3>Producción audiovisual</h3>
+      <ul><li>Cinematográfica</li><li>Educacional</li></ul>
+      <span class="go">Ver demos <span class="arrow">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== 01 — E-LEARNING ===================== -->
+<section class="demo-section" id="elearning">
+  <span class="reel-counter">01</span>
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> 01 — DESARROLLO E-LEARNING</div>
+      <h2>Cursos construidos a medida.</h2>
+      <p>Diseño instruccional completo en las tres herramientas más usadas del mercado.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+        <div class="meta">Curso · Rise</div>
+        <h4>Desarrollado en Rise 360</h4>
+        <ul class="checklist">
+          <li>Responsive</li>
+          <li>Diseño instruccional</li>
+          <li>Interacciones</li>
+          <li>Evaluaciones</li>
+        </ul>
+        <a href="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+        <div class="meta">Curso · Storyline</div>
+        <h4>Desarrollado en Storyline</h4>
+        <ul class="checklist">
+          <li>Escenarios</li>
+          <li>Variables</li>
+          <li>Gamificación</li>
+          <li>Evaluaciones</li>
+        </ul>
+        <a href="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+        <div class="meta">Curso · iSpring</div>
+        <h4>Desarrollado en iSpring</h4>
+        <ul class="checklist">
+          <li>Conversión PPT</li>
+          <li>Cuestionarios</li>
+          <li>Navegación</li>
+        </ul>
+        <a href="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 — IA EDUCATIVA ===================== -->
+<section class="demo-section dark" id="ia">
+  <span class="reel-counter">02</span>
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> 02 — IA EDUCATIVA</div>
+      <h2>Agentes que enseñan, evalúan y acompañan.</h2>
+      <p>Tutores conversacionales y agentes especializados entrenados sobre contenido real.</p>
+    </div>
+
+    <!-- Tutor IA — destacado -->
+    <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> PRODUCTO DESTACADO</div>
+    <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:40px; margin-bottom:64px; align-items:center;" class="featured-tutor">
+      <div>
+        <h3 style="font-size:32px; margin-bottom:14px;">Tutor IA</h3>
+        <p class="desc" style="font-size:15px; margin-bottom:18px;">Tutor conversacional basado en IA, entrenado sobre contenido del curso. Explica, responde y evalúa — disponible 24/7 para cada estudiante.</p>
+        <ul class="checklist" style="margin-bottom:22px;">
+          <li>Explica contenidos</li>
+          <li>Responde preguntas</li>
+          <li>Evalúa conocimientos</li>
+          <li>Memoria persistente por estudiante</li>
+        </ul>
+        <a href="https://peppy-ganache-6163dd.netlify.app/" class="demo-link" target="_blank" rel="noopener">▶ Probar tutor</a>
+      </div>
+      <div class="frame" style="aspect-ratio:4/3;margin-bottom:0;overflow:hidden;padding:0;"><iframe src="https://peppy-ganache-6163dd.netlify.app/" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+    </div>
+
+    <div class="card-grid two" style="margin-bottom:64px;">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">Caso de uso</div>
+        <h4>Caso Facultad</h4>
+        <p class="desc">Implementación real en una institución de educación superior.</p>
+        <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver demo</a>
+      </div>
+    </div>
+
+    <!-- Agentes IA -->
+    <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> AGENTES IA</div>
+    <div class="card-grid">
+      <div class="demo-card">
+        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
+        <h4>Tutor Académico Laboral</h4>
+        <a href="https://chatgpt.com/g/g-69bc65e78ecc8191925b21c19c371931-tutor-academico-laboral-u1-u2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
+        <h4>Tutor de Prácticas</h4>
+        <a href="https://chatgpt.com/g/g-69bc77b620e88191a31713c3545ef68b-tutor-de-practicas-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
+        <h4>Tutor de Evaluación</h4>
+        <a href="https://chatgpt.com/g/g-69c574f52b3881919ed3e65c62b7249d-tutor-de-evaluacion-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
+        <h4>Simulador Clínico</h4>
+        <a href="https://chatgpt.com/g/g-6fkgkf8h0-persona-en-contexto-de-encierro" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
+        <h4>Simulador de Entrevista</h4>
+        <a href="https://chatgpt.com/g/g-685216a470d0819188337e4d1c5aa43f-luciano-torres-entrevista-laboral" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+      </div>
+    </div>
+
+    <!-- Avatar IA -->
+    <div style="margin-top:64px;" class="card-grid">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/avatar-ia-kari-0542c6a3dc78468d903cb49ed9fdbb08" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">IA · Video</div>
+        <h4>Avatar IA — Kari</h4>
+        <p class="desc">El avatar de Karina Núñez explica tareas y foros a estudiantes, facilitando la comprensión de forma verbal.</p>
+        <ul class="checklist">
+          <li>Presentaciones</li>
+          <li>Capacitación</li>
+          <li>Inducción</li>
+        </ul>
+        <a href="https://app.heygen.com/videos/avatar-ia-kari-0542c6a3dc78468d903cb49ed9fdbb08" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/avatar-iv-video-dba3f37b10ff4d0cba8402446d2aa62a" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">IA · Video</div>
+        <h4>Avatar IA — segundo ejemplo</h4>
+        <p class="desc">Avatar generado con IA, presentando contenido a cámara.</p>
+        <a href="https://app.heygen.com/videos/avatar-iv-video-dba3f37b10ff4d0cba8402446d2aa62a" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">IA · Video</div>
+        <h4>Explicador con 4 avatares</h4>
+        <p class="desc">Video explicativo con texto en pantalla y 4 avatares IA embebidos, que se turnan para desarrollar la teoría.</p>
+        <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 — LOCALIZACIÓN ===================== -->
+<section class="demo-section" id="localizacion">
+  <span class="reel-counter">03</span>
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> 03 — LOCALIZACIÓN</div>
+      <h2>El mismo curso, en cualquier idioma.</h2>
+      <p>Avatares multilingües y doblaje generado con IA, listos para escalar a nuevos mercados.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/untitled-video-137771f05cbc4cfeae1e6d2af0107212" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">ES</span><h4>Español</h4></div>
+        <a href="https://app.heygen.com/videos/untitled-video-137771f05cbc4cfeae1e6d2af0107212" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/untitled-video-it-it-61950b25ecaf4a63923f838acb89af89?proj=f48f19731f8f40ef849831f3d06369f8" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">IT</span><h4>Italiano</h4><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--signal);padding:3px 8px;margin-left:4px;">Recomendado</span></div>
+        <a href="https://app.heygen.com/videos/untitled-video-it-it-61950b25ecaf4a63923f838acb89af89?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/untitled-video-it-it-en-943527f007854ac086d48b50d0f84fc8?proj=f48f19731f8f40ef849831f3d06369f8" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">EN</span><h4>English</h4></div>
+        <a href="https://app.heygen.com/videos/untitled-video-it-it-en-943527f007854ac086d48b50d0f84fc8?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 — AUDIOVISUAL ===================== -->
+<section class="demo-section dark" id="audiovisual">
+  <span class="reel-counter">04</span>
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> 04 — PRODUCCIÓN AUDIOVISUAL</div>
+      <h2>De guion a pantalla.</h2>
+      <p>Producción audiovisual completa: dirección, rodaje, edición y postproducción.</p>
+      <p style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:rgba(237,231,220,0.45); margin-top:10px;">Corporativo · Educativo · Ficción</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1sqT_Kr5iddUuajDHcqcW1fMUqZWC4BB4/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">Educacional · Orientación Vocacional y Ocupacional</div>
+        <h4>Díganme Licenciada</h4>
+        <a href="https://drive.google.com/file/d/1sqT_Kr5iddUuajDHcqcW1fMUqZWC4BB4/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1KcR5K69uxWUKKn9ZujJ4CH-_MmcoPHVL/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">Producción cinematográfica</div>
+        <h4>Fantasía</h4>
+        <a href="https://drive.google.com/file/d/1KcR5K69uxWUKKn9ZujJ4CH-_MmcoPHVL/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver pieza</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/16qEH38Ufu0BsHxw_A-p7Wruvr8MTSt3k/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <div class="meta">Cortometraje de ficción</div>
+        <h4>PSIBOT</h4>
+        <p class="desc">Corto sobre los riesgos de la IA como acompañante: un almuerzo entre amigos, bullying y un consejo que termina en tragedia.</p>
+        <a href="https://drive.google.com/file/d/16qEH38Ufu0BsHxw_A-p7Wruvr8MTSt3k/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver corto</a>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin:56px 0 18px;"><span class="dot"></span> SPOTS MOTIVACIONALES</div>
+    <div class="card-grid two">
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1Cotmm-Py5R496EIHLaAfoAaOzv34hNEj/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <h4>Spot motivacional — 1</h4>
+        <a href="https://drive.google.com/file/d/1Cotmm-Py5R496EIHLaAfoAaOzv34hNEj/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+      </div>
+      <div class="demo-card">
+        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/17mo3auHJr1wlcvypB5__Nr4h6qjh9t3W/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
+        <h4>Spot motivacional — 2</h4>
+        <a href="https://drive.google.com/file/d/17mo3auHJr1wlcvypB5__Nr4h6qjh9t3W/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-services">
+        <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> SERVICIOS</div>
+        <ul>
+          <li>Desarrollo e-learning</li>
+          <li>Producción audiovisual</li>
+          <li>Inteligencia Artificial</li>
+          <li>Localización</li>
+          <li>Diseño instruccional</li>
+        </ul>
+      </div>
+      <div class="author-line" style="font-size:14px;">
+        <strong style="display:block; font-family:'Fraunces',serif; font-size:22px; color:var(--paper); margin-bottom:8px;">INTEGRA by Karina Núñez</strong>
+        Learning Solutions Demo Center
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 — INTEGRA BY KARINA NÚÑEZ</span>
+      <span>DEMO N.º 01 / 04 — FIN</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
