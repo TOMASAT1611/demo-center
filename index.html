@@ -3,610 +3,608 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Learning Portfolio — INTEGRA by Karina Núñez</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Learning Solutions Demo Center — INTEGRA Consultora</title>
 <style>
   :root{
-    --ink:#1E3A3D;
-    --ink-soft:#5C6670;
-    --paper:#FAF7F0;
-    --paper-dim:#EFE9DA;
-    --signal:#5BAFA0;
-    --tape:#5BAFA0;
-    --gold:#C9A227;
-    --line: rgba(250,247,240,0.16);
-    --line-dark: rgba(30,58,61,0.14);
-    --radius: 2px;
+    --navy:#1C3A4A;
+    --teal:#2D6F6B;
+    --signal:#4DA6A0;
+    --gray:#5A6B73;
+    --cream:#F2EFE7;
+    --cream-dark:#E8E4DB;
+    --white:#FFFFFF;
+    --radius:4px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
+    background:var(--white);
+    color:#2A2A2A;
+    font-family:'Trebuchet MS','Segoe UI',Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
+    font-size:17px;
+    line-height:1.6;
   }
-  ::selection{ background:var(--signal); color:var(--paper); }
-
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--signal);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow .dot{
-    width:7px; height:7px; border-radius:50%;
-    background:var(--signal);
-    box-shadow:0 0 0 3px rgba(91,175,160,0.18);
-    flex:none;
-  }
-  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; }
-
+  ::selection{ background:var(--signal); color:var(--white); }
+  h1,h2,h3,h4{ font-family:Georgia,'Times New Roman',serif; color:var(--navy); font-weight:700; line-height:1.15; }
   a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
 
-  /* ---------- NAV ---------- */
-  .topnav{
+  .tag{
+    font-family:'Trebuchet MS',sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--signal);
+    display:flex; align-items:center; gap:8px;
+  }
+  .tag .dot{ width:7px; height:7px; border-radius:50%; background:var(--signal); flex:none; }
+
+  /* ---------- HEADER ---------- */
+  header.site-header{
     position:sticky; top:0; z-index:50;
-    background:rgba(20,23,28,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
+    background:var(--white);
+    box-shadow:0 2px 8px rgba(28,58,74,0.08);
+    height:72px;
   }
-  .topnav-inner{
-    max-width:1180px; margin:0 auto;
+  .site-header-inner{
+    max-width:1200px; margin:0 auto; height:100%;
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
-    color:var(--paper);
+    padding:0 28px;
   }
-  .brandmark{
-    display:flex; align-items:center; gap:10px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px; letter-spacing:.08em;
-  }
-  .brandmark .rec{
-    width:8px; height:8px; border-radius:50%; background:var(--signal);
-    animation:pulse 2.2s ease-in-out infinite;
-  }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
-  .navlinks{ display:flex; gap:28px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; }
-  .navlinks a{ color:rgba(237,231,220,0.6); transition:color .2s; white-space:nowrap; }
-  .navlinks a:hover{ color:var(--paper); }
-  @media (max-width:880px){ .navlinks{ display:none; } }
+  .brandmark{ font-family:Georgia,serif; font-weight:700; font-size:21px; color:var(--navy); letter-spacing:-0.01em; }
+  .brandmark span{ color:var(--signal); }
+  .navlinks{ display:flex; gap:32px; font-size:15px; font-weight:700; }
+  .navlinks a{ color:var(--gray); transition:color .2s; }
+  .navlinks a:hover{ color:var(--teal); }
+  @media (max-width:820px){ .navlinks{ display:none; } }
 
   /* ---------- HERO ---------- */
   .hero{
-    background:
-      radial-gradient(ellipse 900px 500px at 18% -10%, rgba(91,175,160,0.16), transparent 60%),
-      var(--ink);
-    color:var(--paper);
-    padding:120px 28px 100px;
-    position:relative;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
+    background:linear-gradient(120deg, var(--navy) 60%, var(--teal) 130%);
+    color:var(--white);
+    padding:96px 28px 88px;
   }
-  .hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(237,231,220,0.035) 40px),
-      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(237,231,220,0.035) 40px);
-    pointer-events:none;
-  }
-  .hero-inner{ max-width:1180px; margin:0 auto; position:relative; }
-  .hero-frame{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px; color:rgba(237,231,220,0.4);
-    display:flex; justify-content:space-between;
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    padding:10px 0; margin-bottom:64px;
-    letter-spacing:.08em;
-  }
+  .hero-inner{ max-width:1200px; margin:0 auto; }
+  .hero .tag{ color:var(--signal); margin-bottom:24px; }
   .hero h1{
-    font-size:clamp(48px, 8vw, 96px);
-    line-height:0.98;
-    margin:28px 0 8px;
+    font-size:clamp(40px,6vw,64px);
+    color:var(--white);
+    max-width:760px;
+    margin-bottom:24px;
   }
-  .hero h1 em{ font-style:italic; color:var(--signal); font-weight:500; }
   .hero p.sub{
-    font-size:19px; color:rgba(237,231,220,0.72);
-    max-width:480px; margin:24px 0 48px;
-    line-height:1.5;
+    font-size:19px; color:var(--cream);
+    max-width:600px; margin-bottom:40px;
+    line-height:1.55;
   }
-  .hero-footer{
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
-    margin-top:8px;
-  }
-  .author-line{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:rgba(237,231,220,0.55);
-    letter-spacing:.05em;
-  }
-  .author-line strong{ color:var(--paper); font-weight:500; }
+  .hero-buttons{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
   .btn{
     display:inline-flex; align-items:center; gap:10px;
-    background:var(--signal); color:var(--ink);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
-    padding:16px 28px;
+    background:var(--signal); color:var(--navy);
+    font-weight:700; font-size:15px;
+    padding:15px 26px;
     border-radius:var(--radius);
-    transition:transform .18s ease, box-shadow .18s ease;
-    box-shadow:0 0 0 1px rgba(20,23,28,0.0);
+    transition:transform .15s ease;
   }
-  .btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px -10px rgba(91,175,160,0.5); }
+  .btn:hover{ transform:translateY(-2px); }
   .btn-ghost{
-    background:transparent; color:var(--paper);
-    box-shadow:inset 0 0 0 1px rgba(237,231,220,0.35);
+    background:transparent; color:var(--white);
+    border:1.5px solid rgba(255,255,255,0.6);
   }
-  .btn-ghost:hover{ box-shadow:inset 0 0 0 1px var(--paper); }
-  .btn-small{ padding:11px 18px; font-size:11.5px; }
+  .btn-ghost:hover{ border-color:var(--white); }
+  .hero-credit{
+    font-size:15px; color:rgba(242,239,231,0.8);
+    border-left:3px solid var(--signal); padding-left:16px; max-width:560px;
+  }
 
-  /* ---------- MENU (4 cards) ---------- */
-  .menu-section{ padding:88px 28px; max-width:1180px; margin:0 auto; }
-  .section-head{ margin-bottom:44px; max-width:560px; }
-  .section-head h2{ font-size:clamp(28px,4vw,40px); margin-top:14px; }
-  .section-head p{ color:var(--ink-soft); margin-top:14px; font-size:15.5px; line-height:1.6; }
+  /* ---------- ÍNDICE ---------- */
+  .index-section{ padding:72px 28px; max-width:1200px; margin:0 auto; }
+  .section-head{ margin-bottom:40px; max-width:640px; }
+  .section-head h2{ font-size:clamp(28px,4vw,36px); margin-bottom:14px; }
+  .section-head p{ color:var(--gray); font-size:17px; }
 
-  .menu-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--line-dark);
-    border:1px solid var(--line-dark);
+  .index-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
   }
-  @media (max-width:760px){ .menu-grid{ grid-template-columns:1fr; } }
+  @media (max-width:980px){ .index-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .index-grid{ grid-template-columns:1fr; } }
 
-  .menu-card{
-    background:var(--paper);
-    padding:40px 36px;
-    display:flex; flex-direction:column; gap:18px;
-    min-height:220px;
-    transition:background .2s ease;
-    position:relative;
+  .index-card{
+    background:var(--cream);
+    border-top:4px solid var(--signal);
+    border-radius:var(--radius);
+    padding:28px 24px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .18s ease, box-shadow .18s ease;
   }
-  .menu-card:hover{ background:var(--paper-dim); }
-  .menu-card .icon{ width:34px; height:34px; color:var(--ink); }
-  .menu-card h3{ font-size:23px; }
-  .menu-card ul{ list-style:none; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); display:flex; flex-wrap:wrap; gap:8px 14px; }
-  .menu-card ul li::before{ content:"·"; margin-right:6px; color:var(--signal); }
-  .menu-card .go{
-    margin-top:auto;
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--ink); display:flex; align-items:center; gap:8px;
-  }
-  .menu-card .go .arrow{ color:var(--signal); transition:transform .2s; }
-  .menu-card:hover .go .arrow{ transform:translateX(4px); }
+  .index-card:hover{ transform:translateY(-3px); box-shadow:0 12px 24px -12px rgba(28,58,74,0.35); }
+  .index-card .icon{ width:32px; height:32px; color:var(--teal); }
+  .index-card h3{ font-size:21px; }
+  .index-card p{ color:var(--gray); font-size:14.5px; }
+  .index-card .go{ margin-top:auto; font-weight:700; font-size:14px; color:var(--teal); }
 
   /* ---------- DEMO SECTIONS ---------- */
-  .demo-section{
-    padding:96px 28px;
-    border-top:1px solid var(--line-dark);
-    scroll-margin-top:70px;
+  .demo-section{ padding:80px 28px; border-top:1px solid var(--cream-dark); }
+  .demo-section.alt{ background:var(--cream); }
+  .demo-section.dark{ background:var(--navy); color:var(--white); }
+  .demo-section.dark .section-head p{ color:rgba(242,239,231,0.8); }
+  .demo-section.dark h2{ color:var(--white); }
+  .demo-section-inner{ max-width:1200px; margin:0 auto; }
+
+  .card-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; }
+  .card-grid.two{ grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); }
+
+  .demo-card{
+    background:var(--white); border-radius:var(--radius);
+    box-shadow:0 1px 3px rgba(28,58,74,0.12);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease;
   }
-  .demo-section.dark{ background:var(--ink); color:var(--paper); }
-  .demo-section.dark .section-head p{ color:rgba(237,231,220,0.62); }
-  .demo-section.dark .eyebrow{ color:var(--signal); }
-  .demo-section-inner{ max-width:1180px; margin:0 auto; }
+  .demo-card:hover{ transform:translateY(-3px); box-shadow:0 16px 28px -16px rgba(28,58,74,0.35); }
+  .dark .demo-card{ background:var(--cream); }
 
-  .reel-counter{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:120px; font-weight:600; line-height:1;
-    color:var(--line-dark);
-    position:absolute; top:0; right:28px;
-    pointer-events:none; user-select:none;
-  }
-  .demo-section{ position:relative; overflow:hidden; }
-
-  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:8px; }
-  @media (max-width:900px){ .card-grid{ grid-template-columns:1fr; } }
-  @media (max-width:760px){ .featured-tutor{ grid-template-columns:1fr !important; } }
-  .card-grid.two{ grid-template-columns:repeat(2,1fr); }
-  @media (max-width:760px){ .card-grid.two{ grid-template-columns:1fr; } }
-
-  .demo-card{ display:flex; flex-direction:column; }
   .frame{
-    aspect-ratio:16/10;
-    background:
-      linear-gradient(135deg, rgba(20,23,28,0.05), rgba(20,23,28,0.02)),
-      repeating-linear-gradient(45deg, rgba(20,23,28,0.04) 0 1px, transparent 1px 14px);
-    border:1px solid var(--line-dark);
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg, var(--navy), var(--teal));
     position:relative;
-    margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .frame .play{
+    width:52px; height:52px; border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    border:1.5px solid rgba(255,255,255,0.6);
     display:flex; align-items:center; justify-content:center;
   }
-  .dark .frame{
-    background:
-      linear-gradient(135deg, rgba(237,231,220,0.06), rgba(237,231,220,0.02)),
-      repeating-linear-gradient(45deg, rgba(237,231,220,0.05) 0 1px, transparent 1px 14px);
-    border-color:var(--line);
+  .frame .play::before{
+    content:""; width:0; height:0;
+    border-style:solid; border-width:9px 0 9px 15px;
+    border-color:transparent transparent transparent var(--white);
+    margin-left:3px;
   }
-  .frame::before, .frame::after,
-  .frame .c2::before, .frame .c2::after{
-    content:""; position:absolute; width:18px; height:18px;
-    border-color:var(--signal); border-style:solid; opacity:.85;
-    z-index:1;
-  }
-  .frame::before{ top:10px; left:10px; border-width:2px 0 0 2px; }
-  .frame::after{ bottom:10px; right:10px; border-width:0 2px 2px 0; }
   .frame .label{
-    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
-    letter-spacing:.08em; text-transform:uppercase;
+    position:absolute; bottom:12px; left:14px;
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--white); opacity:.9;
   }
-  .dark .frame .label{ color:rgba(237,231,220,0.45); }
   .badge-rec{
-    position:absolute; top:10px; left:10px;
-    font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--ink); background:var(--signal);
-    padding:3px 8px;
-  }
-  .frame .playdot{
-    position:absolute; top:14px; right:14px;
-    width:8px; height:8px; border-radius:50%; background:var(--signal);
+    position:absolute; top:12px; left:14px;
+    font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--navy); background:var(--signal);
+    padding:4px 10px; border-radius:3px;
   }
 
-  .demo-card h4{ font-family:'Fraunces', serif; font-weight:600; font-size:20px; margin-bottom:6px; }
-  .demo-card .meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); letter-spacing:.05em; text-transform:uppercase; margin-bottom:10px;}
-  .dark .demo-card .meta{ color:rgba(237,231,220,0.5); }
-  .demo-card .desc{ font-size:14px; color:var(--ink-soft); line-height:1.55; margin-bottom:14px; }
-  .dark .demo-card .desc{ color:rgba(237,231,220,0.65); }
-  .checklist{ list-style:none; margin-bottom:18px; }
-  .checklist li{ font-size:13.5px; padding:4px 0; display:flex; gap:9px; align-items:flex-start; }
-  .checklist li::before{ content:"✓"; color:var(--tape); font-weight:700; flex:none; }
+  .demo-card-body{ padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .demo-card .meta{ font-size:12.5px; font-weight:700; color:var(--teal); letter-spacing:.05em; text-transform:uppercase; }
+  .demo-card h4{ font-size:20px; }
+  .demo-card .desc{ font-size:14.5px; color:var(--gray); line-height:1.55; }
+  .checklist li{ font-size:14.5px; padding:3px 0; display:flex; gap:8px; align-items:flex-start; color:#3A3A3A; }
+  .checklist li::before{ content:"✓"; color:var(--signal); font-weight:700; flex:none; }
 
   .demo-link{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    margin-top:auto; align-self:flex-start;
+    font-weight:700; font-size:14.5px;
     display:inline-flex; align-items:center; gap:8px;
-    padding:11px 16px;
-    border:1px solid var(--ink);
-    width:fit-content;
-    transition:background .18s, color .18s;
+    padding:11px 18px;
+    background:var(--teal); color:var(--white);
+    border-radius:var(--radius);
+    transition:background .18s;
   }
-  .demo-link:hover{ background:var(--ink); color:var(--paper); }
-  .dark .demo-link{ border-color:var(--paper); }
-  .dark .demo-link:hover{ background:var(--paper); color:var(--ink); }
+  .demo-link:hover{ background:var(--navy); }
 
-  .placeholder-flag{
-    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gold);
-    margin-top:6px; letter-spacing:.04em;
-  }
+  /* featured tutor */
+  .featured-tutor{ display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center; margin-bottom:56px; }
+  @media (max-width:760px){ .featured-tutor{ grid-template-columns:1fr; } }
+  .featured-tutor h3{ font-size:30px; color:var(--white); margin-bottom:14px; }
+  .featured-tutor .desc{ font-size:16px; color:rgba(242,239,231,0.85); margin-bottom:18px; }
+  .featured-tutor .checklist li{ color:var(--cream); font-size:15px; }
+  .featured-tutor .frame{ aspect-ratio:4/3; border-radius:var(--radius); }
 
   /* localization rows */
-  .loc-list{ display:flex; flex-direction:column; max-width:640px; margin-top:12px; }
+  .loc-list{ display:flex; flex-direction:column; max-width:680px; border-top:1px solid var(--cream-dark); margin-top:8px; }
   .loc-row{
     display:flex; align-items:center; justify-content:space-between;
-    padding:22px 4px; border-bottom:1px solid var(--line);
+    padding:24px 6px; border-bottom:1px solid var(--cream-dark);
   }
-  .loc-row .lang{ display:flex; align-items:center; gap:16px; }
-  .loc-row .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(237,231,220,0.4); }
-  .loc-row h4{ font-family:'Fraunces', serif; font-size:21px; }
+  .loc-row .lang{ display:flex; align-items:center; gap:18px; }
+  .loc-row .code{ font-weight:700; font-size:14px; color:var(--gray); width:30px; }
+  .loc-row h4{ font-size:22px; }
+  .loc-row .rec-pill{
+    font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--navy); background:var(--signal); padding:3px 10px; border-radius:3px; margin-left:6px;
+  }
 
-  /* footer */
-  footer{ background:var(--ink); color:var(--paper); padding:64px 28px 36px; }
-  .footer-inner{ max-width:1180px; margin:0 auto; }
-  .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; border-bottom:1px solid var(--line); padding-bottom:40px; margin-bottom:24px; }
-  .footer-services ul{ list-style:none; columns:2; gap:24px; font-size:13.5px; }
-  .footer-services li{ padding:5px 0; display:flex; gap:9px; }
-  .footer-services li::before{ content:"✓"; color:var(--tape); font-weight:700; }
-  .footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(237,231,220,0.4); letter-spacing:.05em; }
+  /* ---------- ACADÉMICO ---------- */
+  .academic-list{ display:flex; flex-direction:column; max-width:820px; border-top:1px solid var(--cream-dark); margin-top:8px; }
+  .academic-item{ padding:26px 4px; border-bottom:1px solid var(--cream-dark); display:flex; flex-direction:column; gap:8px; }
+  .academic-item .meta{ font-size:12.5px; font-weight:700; color:var(--teal); letter-spacing:.05em; text-transform:uppercase; }
+  .academic-item h4{ font-size:19px; line-height:1.35; }
+  .academic-item .summary{ font-size:14.5px; color:#3A3A3A; line-height:1.55; max-width:700px; }
+  .academic-item .apa{ font-size:14px; color:var(--gray); line-height:1.55; font-style:italic; max-width:700px; }
+  .academic-item .academic-link{ margin-top:4px; font-weight:700; font-size:14px; color:var(--teal); align-self:flex-start; }
+  .academic-item .academic-link:hover{ color:var(--navy); }
+  .academic-note{ font-size:13.5px; color:var(--gray); margin-top:28px; max-width:680px; }
 
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--cream-dark); padding:56px 28px 32px; }
+  .footer-inner{ max-width:1200px; margin:0 auto; }
+  .footer-top{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px;
+    border-bottom:1px solid rgba(28,58,74,0.15); padding-bottom:36px; margin-bottom:24px;
+  }
+  .footer-services h4{ font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
+  .footer-services ul{ columns:2; gap:24px; font-size:15px; }
+  .footer-services li{ padding:4px 0; display:flex; gap:8px; color:var(--navy); }
+  .footer-services li::before{ content:"✓"; color:var(--teal); font-weight:700; }
+  .footer-brand strong{ display:block; font-family:Georgia,serif; font-size:22px; color:var(--navy); margin-bottom:6px; }
+  .footer-brand span{ font-size:14.5px; color:var(--gray); }
+  .footer-bottom{ font-size:13.5px; color:var(--gray); }
 </style>
 </head>
 <body>
 
-<nav class="topnav">
-  <div class="topnav-inner">
-    <div class="brandmark"><span class="rec"></span> INTEGRA — DEMO CENTER</div>
-    <div class="navlinks">
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="brandmark">INTEGRA <span>· Demo Center</span></div>
+    <nav class="navlinks">
       <a href="#elearning">E-Learning</a>
       <a href="#ia">IA Educativa</a>
       <a href="#localizacion">Localización</a>
       <a href="#audiovisual">Audiovisual</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ===================== HERO / PORTADA ===================== -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-frame">
-      <span>DEMO N.º 01 / 04</span>
-      <span>FORMATO — PORTFOLIO</span>
-      <span>2026</span>
-    </div>
-    <div class="eyebrow"><span class="dot"></span> DIGITAL LEARNING PORTFOLIO</div>
-    <h1>Digital Learning<br><em>Portfolio.</em></h1>
-    <p class="sub">Soluciones para e-learning, inteligencia artificial educativa y producción audiovisual — experiencias de aprendizaje digital en un solo lugar.</p>
-    <p style="font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:rgba(237,231,220,0.5); letter-spacing:.04em; max-width:480px; margin-bottom:48px;">INTEGRA está dirigida por Karina Núñez — psicóloga, docente universitaria y diseñadora instruccional especializada en experiencias de aprendizaje potenciadas con IA.</p>
-    <div class="hero-footer">
-      <a href="#menu" class="btn">▶ Ver demos</a>
-      <div class="author-line">Diseñado y producido por <strong>INTEGRA by Karina Núñez</strong></div>
-    </div>
+      <a href="#academica">Creación de Contenido</a>
+    </nav>
   </div>
 </header>
 
-<!-- ===================== MENÚ — 4 TARJETAS ===================== -->
-<section class="menu-section" id="menu">
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="tag"><span class="dot"></span>LEARNING SOLUTIONS DEMO CENTER</div>
+    <h1>Demos listos para explorar.</h1>
+    <p class="sub">Soluciones reales de e-learning, inteligencia artificial educativa, localización y producción audiovisual — todo en un mismo lugar.</p>
+    <div class="hero-buttons">
+      <a href="#indice" class="btn">▶ Ver demos</a>
+    </div>
+    <p class="hero-credit">INTEGRA está dirigida por Karina Núñez — Lic. en Psicología, profesora universitaria, certificada en IA Agéntica por el MIT e investigadora de IA aplicada a la educación con artículos publicados. Diseñadora instruccional especializada en experiencias de aprendizaje potenciadas con IA.</p>
+  </div>
+</section>
+
+<!-- ===================== ÍNDICE ===================== -->
+<section class="index-section" id="indice">
   <div class="section-head">
-    <div class="eyebrow"><span class="dot"></span> ÍNDICE</div>
-    <h2>Cuatro líneas de trabajo.</h2>
+    <h2>Cinco líneas de trabajo.</h2>
     <p>Cada bloque agrupa demos reales, listos para explorar. Elegí por dónde empezar.</p>
   </div>
 
-  <div style="display:flex; flex-wrap:wrap; gap:48px; padding:28px 0 44px; border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); margin-bottom:48px;">
-    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">3</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Herramientas de autor</div></div>
-    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">5</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Agentes IA</div></div>
-    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">3</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Idiomas</div></div>
-    <div><div style="font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);">15+</div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px;">Proyectos demo</div></div>
-  </div>
-
-  <div class="menu-grid">
-    <a href="#elearning" class="menu-card">
-      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">01</div>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+  <div class="index-grid">
+    <a href="#elearning" class="index-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
       <h3>Desarrollo e-learning</h3>
-      <ul><li>Rise</li><li>Storyline</li><li>iSpring</li></ul>
-      <span class="go">Ver demos <span class="arrow">→</span></span>
+      <p>Diseño instruccional y digitalización de contenido para cualquier plataforma</p>
+      <span class="go">Ver demos →</span>
     </a>
-
-    <a href="#ia" class="menu-card">
-      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">02</div>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="1.6"/><circle cx="20" cy="6" r="1.6"/><circle cx="4" cy="18" r="1.6"/><circle cx="20" cy="18" r="1.6"/><path d="M9.8 10.2 5.3 7M14.2 10.2 18.7 7M9.8 13.8 5.3 17M14.2 13.8 18.7 17"/></svg>
+    <a href="#ia" class="index-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="1.6"/><circle cx="20" cy="6" r="1.6"/><circle cx="4" cy="18" r="1.6"/><circle cx="20" cy="18" r="1.6"/><path d="M9.8 10.2 5.3 7M14.2 10.2 18.7 7M9.8 13.8 5.3 17M14.2 13.8 18.7 17"/></svg>
       <h3>IA educativa</h3>
-      <ul><li>Tutor IA</li><li>Agentes IA</li><li>Avatares</li></ul>
-      <span class="go">Ver demos <span class="arrow">→</span></span>
+      <p>Tutores, agentes conversacionales y automatización aplicada a la educación</p>
+      <span class="go">Ver demos →</span>
     </a>
-
-    <a href="#localizacion" class="menu-card">
-      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">03</div>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+    <a href="#localizacion" class="index-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
       <h3>Localización</h3>
-      <ul><li>ES</li><li>IT</li><li>EN</li></ul>
-      <span class="go">Ver demo <span class="arrow">→</span></span>
+      <p>Traducción, doblaje y adaptación de contenido a cualquier idioma</p>
+      <span class="go">Ver demo →</span>
     </a>
-
-    <a href="#audiovisual" class="menu-card">
-      <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink-soft); letter-spacing:.02em;">04</div>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="13" height="12" rx="1.2"/><path d="m16 10 5-3v10l-5-3"/></svg>
+    <a href="#audiovisual" class="index-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="13" height="12" rx="1.2"/><path d="m16 10 5-3v10l-5-3"/></svg>
       <h3>Producción audiovisual</h3>
-      <ul><li>Cinematográfica</li><li>Educacional</li></ul>
-      <span class="go">Ver demos <span class="arrow">→</span></span>
+      <p>Video corporativo, educativo y de ficción — de guion a pantalla</p>
+      <span class="go">Ver demos →</span>
+    </a>
+    <a href="#academica" class="index-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+      <h3>Creación de contenido</h3>
+      <p>Publicaciones, ponencias e investigación propia en distintas áreas de contenido experto</p>
+      <span class="go">Ver publicaciones →</span>
     </a>
   </div>
 </section>
 
-<!-- ===================== 01 — E-LEARNING ===================== -->
-<section class="demo-section" id="elearning">
-  <span class="reel-counter">01</span>
+<!-- ===================== E-LEARNING ===================== -->
+<section class="demo-section alt" id="elearning">
   <div class="demo-section-inner">
     <div class="section-head">
-      <div class="eyebrow"><span class="dot"></span> 01 — DESARROLLO E-LEARNING</div>
+      <div class="tag"><span class="dot"></span>DESARROLLO E-LEARNING</div>
       <h2>Cursos construidos a medida.</h2>
       <p>Diseño instruccional completo en las tres herramientas más usadas del mercado.</p>
     </div>
 
     <div class="card-grid">
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
-        <div class="meta">Curso · Rise</div>
-        <h4>Desarrollado en Rise 360</h4>
-        <ul class="checklist">
-          <li>Responsive</li>
-          <li>Diseño instruccional</li>
-          <li>Interacciones</li>
-          <li>Evaluaciones</li>
-        </ul>
-        <a href="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Rise 360</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Curso · Rise</div>
+          <h4>Desarrollado en Rise 360</h4>
+          <ul class="checklist"><li>Responsive</li><li>Diseño instruccional</li><li>Interacciones</li><li>Evaluaciones</li></ul>
+          <a href="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        </div>
       </div>
-
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
-        <div class="meta">Curso · Storyline</div>
-        <h4>Desarrollado en Storyline</h4>
-        <ul class="checklist">
-          <li>Escenarios</li>
-          <li>Variables</li>
-          <li>Gamificación</li>
-          <li>Evaluaciones</li>
-        </ul>
-        <a href="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Storyline 360</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Curso · Storyline</div>
+          <h4>Desarrollado en Storyline</h4>
+          <ul class="checklist"><li>Escenarios</li><li>Variables</li><li>Gamificación</li><li>Evaluaciones</li></ul>
+          <a href="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        </div>
       </div>
-
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
-        <div class="meta">Curso · iSpring</div>
-        <h4>Desarrollado en iSpring</h4>
-        <ul class="checklist">
-          <li>Conversión PPT</li>
-          <li>Cuestionarios</li>
-          <li>Navegación</li>
-        </ul>
-        <a href="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        <div class="frame"><span class="play"></span><span class="label">iSpring Suite</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Curso · iSpring</div>
+          <h4>Desarrollado en iSpring</h4>
+          <ul class="checklist"><li>Conversión PPT</li><li>Cuestionarios</li><li>Navegación</li></ul>
+          <a href="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 02 — IA EDUCATIVA ===================== -->
+<!-- ===================== IA EDUCATIVA ===================== -->
 <section class="demo-section dark" id="ia">
-  <span class="reel-counter">02</span>
   <div class="demo-section-inner">
     <div class="section-head">
-      <div class="eyebrow"><span class="dot"></span> 02 — IA EDUCATIVA</div>
+      <div class="tag"><span class="dot"></span>IA EDUCATIVA</div>
       <h2>Agentes que enseñan, evalúan y acompañan.</h2>
       <p>Tutores conversacionales y agentes especializados entrenados sobre contenido real.</p>
     </div>
 
-    <!-- Tutor IA — destacado -->
-    <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> PRODUCTO DESTACADO</div>
-    <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:40px; margin-bottom:64px; align-items:center;" class="featured-tutor">
+    <div class="tag" style="margin-bottom:18px;"><span class="dot"></span>PRODUCTO DESTACADO</div>
+    <div class="featured-tutor">
       <div>
-        <h3 style="font-size:32px; margin-bottom:14px;">Tutor IA</h3>
-        <p class="desc" style="font-size:15px; margin-bottom:18px;">Tutor conversacional basado en IA, entrenado sobre contenido del curso. Explica, responde y evalúa — disponible 24/7 para cada estudiante.</p>
+        <h3>Tutor IA</h3>
+        <p class="desc">El producto insignia de INTEGRA: un tutor conversacional entrenado sobre el contenido real del curso, disponible 24/7 para cada estudiante. A diferencia de los agentes GPT de abajo —que viven dentro de ChatGPT y cualquiera puede probar con su propia cuenta—, el Tutor IA vive fuera de ChatGPT: es infraestructura propia (Make + API de OpenAI), embebible directamente en cualquier curso, sin necesidad de cuenta ni login. No es un agente que responde una consigna puntual — es un acompañante completo de la cursada, con tres modos de uso (explicar, practicar, evaluar) y memoria propia por estudiante, que recuerda el avance entre sesiones.</p>
         <ul class="checklist" style="margin-bottom:22px;">
-          <li>Explica contenidos</li>
-          <li>Responde preguntas</li>
-          <li>Evalúa conocimientos</li>
-          <li>Memoria persistente por estudiante</li>
+          <li>Explica contenidos con clase guiada o por consulta libre</li><li>Responde preguntas en lenguaje natural</li><li>Evalúa conocimientos con devolución</li><li>Memoria persistente por estudiante entre sesiones</li><li>Embebible en cualquier curso vía Web Object, sin login</li>
         </ul>
         <a href="https://peppy-ganache-6163dd.netlify.app/" class="demo-link" target="_blank" rel="noopener">▶ Probar tutor</a>
       </div>
-      <div class="frame" style="aspect-ratio:4/3;margin-bottom:0;overflow:hidden;padding:0;"><iframe src="https://peppy-ganache-6163dd.netlify.app/" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+      <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Tutor conversacional</span></div>
     </div>
 
-    <div class="card-grid two" style="margin-bottom:64px;">
-      <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">Caso de uso</div>
-        <h4>Caso Facultad</h4>
-        <p class="desc">Implementación real en una institución de educación superior.</p>
-        <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver demo</a>
-      </div>
-    </div>
-
-    <!-- Agentes IA -->
-    <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> AGENTES IA</div>
+    <div class="tag" style="margin-bottom:18px;"><span class="dot"></span>AGENTES IA</div>
+    <p style="color:rgba(242,239,231,0.8); font-size:15px; max-width:680px; margin-bottom:24px;">Estos viven dentro de ChatGPT como GPT personalizados — cualquiera los abre y los prueba libremente con su propia cuenta, sin necesidad de ninguna integración. Pensados para una consigna o unidad puntual del programa, son más livianos que el Tutor IA de arriba.</p>
     <div class="card-grid">
       <div class="demo-card">
-        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
-        <h4>Tutor Académico Laboral</h4>
-        <a href="https://chatgpt.com/g/g-69bc65e78ecc8191925b21c19c371931-tutor-academico-laboral-u1-u2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        <div class="frame"><span class="play"></span><span class="label">GPT</span></div>
+        <div class="demo-card-body"><h4>Tutor Académico Laboral</h4>
+          <a href="https://chatgpt.com/g/g-69bc65e78ecc8191925b21c19c371931-tutor-academico-laboral-u1-u2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
-        <h4>Tutor de Prácticas</h4>
-        <a href="https://chatgpt.com/g/g-69bc77b620e88191a31713c3545ef68b-tutor-de-practicas-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        <div class="frame"><span class="play"></span><span class="label">GPT</span></div>
+        <div class="demo-card-body"><h4>Tutor de Prácticas</h4>
+          <a href="https://chatgpt.com/g/g-69bc77b620e88191a31713c3545ef68b-tutor-de-practicas-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
-        <h4>Tutor de Evaluación</h4>
-        <a href="https://chatgpt.com/g/g-69c574f52b3881919ed3e65c62b7249d-tutor-de-evaluacion-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        <div class="frame"><span class="play"></span><span class="label">GPT</span></div>
+        <div class="demo-card-body"><h4>Tutor de Evaluación</h4>
+          <a href="https://chatgpt.com/g/g-69c574f52b3881919ed3e65c62b7249d-tutor-de-evaluacion-laboral-unidad-1-y-2" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
-        <h4>Simulador Clínico</h4>
-        <a href="https://chatgpt.com/g/g-6fkgkf8h0-persona-en-contexto-de-encierro" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        <div class="frame"><span class="play"></span><span class="label">GPT</span></div>
+        <div class="demo-card-body"><h4>Simulador Clínico</h4>
+          <a href="https://chatgpt.com/g/g-6fkgkf8h0-persona-en-contexto-de-encierro" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame"><span class="playdot"></span><span class="label">GPT</span></div>
-        <h4>Simulador de Entrevista</h4>
-        <a href="https://chatgpt.com/g/g-685216a470d0819188337e4d1c5aa43f-luciano-torres-entrevista-laboral" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        <div class="frame"><span class="play"></span><span class="label">GPT</span></div>
+        <div class="demo-card-body"><h4>Simulador de Entrevista</h4>
+          <a href="https://chatgpt.com/g/g-685216a470d0819188337e4d1c5aa43f-luciano-torres-entrevista-laboral" class="demo-link" target="_blank" rel="noopener">▶ Probar</a>
+        </div>
       </div>
     </div>
 
-    <!-- Avatar IA -->
-    <div style="margin-top:64px;" class="card-grid">
+    <div class="tag" style="margin:56px 0 18px;"><span class="dot"></span>AVATARES IA</div>
+    <div class="card-grid">
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/embeds/dba3f37b10ff4d0cba8402446d2aa62a" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="encrypted-media; fullscreen;" allowfullscreen></iframe></div>
-        <div class="meta">IA · Video</div>
-        <h4>Avatar IA — Kari</h4>
-        <p class="desc">El avatar de Karina Núñez explica tareas y foros a estudiantes, facilitando la comprensión de forma verbal.</p>
-        <ul class="checklist">
-          <li>Presentaciones</li>
-          <li>Capacitación</li>
-          <li>Inducción</li>
-        </ul>
-        <a href="https://app.heygen.com/videos/avatar-ia-kari-0542c6a3dc78468d903cb49ed9fdbb08" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Avatar IA</span></div>
+        <div class="demo-card-body">
+          <div class="meta">IA · Video</div>
+          <h4>Avatar IA — demo 1</h4>
+          <p class="desc">Avatar generado con IA, presentando contenido a cámara.</p>
+          <a href="https://app.heygen.com/videos/avatar-ia-kari-0542c6a3dc78468d903cb49ed9fdbb08" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        </div>
       </div>
-
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/videos/avatar-iv-video-dba3f37b10ff4d0cba8402446d2aa62a" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">IA · Video</div>
-        <h4>Avatar IA — segundo ejemplo</h4>
-        <p class="desc">Avatar generado con IA, presentando contenido a cámara.</p>
-        <a href="https://app.heygen.com/videos/avatar-iv-video-dba3f37b10ff4d0cba8402446d2aa62a" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        <div class="frame"><span class="play"></span><span class="label">Avatar IA</span></div>
+        <div class="demo-card-body">
+          <div class="meta">IA · Video</div>
+          <h4>Avatar IA — demo 2</h4>
+          <p class="desc">Avatar generado con IA, presentando contenido a cámara.</p>
+          <a href="https://app.heygen.com/videos/avatar-iv-video-dba3f37b10ff4d0cba8402446d2aa62a" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        </div>
       </div>
-
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">IA · Video</div>
-        <h4>Explicador con 4 avatares</h4>
-        <p class="desc">Video explicativo con texto en pantalla y 4 avatares IA embebidos, que se turnan para desarrollar la teoría.</p>
-        <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        <div class="frame"><span class="play"></span><span class="label">Avatar IA</span></div>
+        <div class="demo-card-body">
+          <div class="meta">IA · Video</div>
+          <h4>Explicador con 4 avatares</h4>
+          <p class="desc">Video explicativo con texto en pantalla y 4 avatares IA embebidos, que se turnan para desarrollar la teoría.</p>
+          <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 03 — LOCALIZACIÓN ===================== -->
+<!-- ===================== LOCALIZACIÓN ===================== -->
 <section class="demo-section" id="localizacion">
-  <span class="reel-counter">03</span>
   <div class="demo-section-inner">
     <div class="section-head">
-      <div class="eyebrow"><span class="dot"></span> 03 — LOCALIZACIÓN</div>
+      <div class="tag"><span class="dot"></span>LOCALIZACIÓN</div>
       <h2>El mismo curso, en cualquier idioma.</h2>
       <p>Avatares multilingües y doblaje generado con IA, listos para escalar a nuevos mercados.</p>
     </div>
 
     <div class="card-grid">
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/embeds/137771f05cbc4cfeae1e6d2af0107212" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="encrypted-media; fullscreen;" allowfullscreen></iframe></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">ES</span><h4>Español</h4></div>
-        <a href="https://app.heygen.com/videos/untitled-video-137771f05cbc4cfeae1e6d2af0107212" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+        <div class="frame"><span class="play"></span><span class="label">Español</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Localización · ES</div>
+          <h4>Español</h4>
+          <p class="desc">Versión original del contenido, narrada en español.</p>
+          <a href="https://app.heygen.com/videos/untitled-video-137771f05cbc4cfeae1e6d2af0107212" class="demo-link" target="_blank" rel="noopener">▶ Ver</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/embeds/61950b25ecaf4a63923f838acb89af89" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="encrypted-media; fullscreen;" allowfullscreen></iframe></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">IT</span><h4>Italiano</h4><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--signal);padding:3px 8px;margin-left:4px;">Recomendado</span></div>
-        <a href="https://app.heygen.com/videos/untitled-video-it-it-61950b25ecaf4a63923f838acb89af89?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+        <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Italiano</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Localización · IT</div>
+          <h4>Italiano</h4>
+          <p class="desc">Mismo contenido, avatar y doblaje generados con IA en italiano.</p>
+          <a href="https://app.heygen.com/videos/untitled-video-it-it-61950b25ecaf4a63923f838acb89af89?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://app.heygen.com/embeds/943527f007854ac086d48b50d0f84fc8" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="encrypted-media; fullscreen;" allowfullscreen></iframe></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);">EN</span><h4>English</h4></div>
-        <a href="https://app.heygen.com/videos/untitled-video-it-it-en-943527f007854ac086d48b50d0f84fc8?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver en pantalla completa</a>
+        <div class="frame"><span class="play"></span><span class="label">English</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Localización · EN</div>
+          <h4>English</h4>
+          <p class="desc">Same content, with AI-generated avatar and voiceover in English.</p>
+          <a href="https://app.heygen.com/videos/untitled-video-it-it-en-943527f007854ac086d48b50d0f84fc8?proj=f48f19731f8f40ef849831f3d06369f8" class="demo-link" target="_blank" rel="noopener">▶ Ver</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 04 — AUDIOVISUAL ===================== -->
+<!-- ===================== AUDIOVISUAL ===================== -->
 <section class="demo-section dark" id="audiovisual">
-  <span class="reel-counter">04</span>
   <div class="demo-section-inner">
     <div class="section-head">
-      <div class="eyebrow"><span class="dot"></span> 04 — PRODUCCIÓN AUDIOVISUAL</div>
+      <div class="tag"><span class="dot"></span>PRODUCCIÓN AUDIOVISUAL</div>
       <h2>De guion a pantalla.</h2>
-      <p>Producción audiovisual completa: dirección, rodaje, edición y postproducción.</p>
-      <p style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:rgba(237,231,220,0.45); margin-top:10px;">Corporativo · Educativo · Ficción</p>
+      <p>Producción audiovisual completa: dirección, rodaje, edición y postproducción. Corporativo · Educativo · Ficción.</p>
     </div>
 
     <div class="card-grid">
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1sqT_Kr5iddUuajDHcqcW1fMUqZWC4BB4/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">Educacional · Orientación Vocacional y Ocupacional</div>
-        <h4>Díganme Licenciada</h4>
-        <a href="https://drive.google.com/file/d/1sqT_Kr5iddUuajDHcqcW1fMUqZWC4BB4/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        <div class="frame" style="background-image:linear-gradient(rgba(28,58,74,.55),rgba(28,58,74,.55)),url('https://drive.google.com/uc?export=view&amp;id=13Ufd3bBnowxw9itYXmPSSUOHmSfhj_rq'); background-size:cover; background-position:center;"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">OVO</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Educacional · Orientación Vocacional</div>
+          <h4>Díganme Licenciada</h4>
+          <p class="desc">Corto sobre la influencia de las representaciones sociales y los mandatos familiares a la hora de elegir un proyecto de vida.</p>
+          <a href="https://drive.google.com/file/d/1sqT_Kr5iddUuajDHcqcW1fMUqZWC4BB4/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1KcR5K69uxWUKKn9ZujJ4CH-_MmcoPHVL/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">Producción cinematográfica</div>
-        <h4>Fantasía</h4>
-        <a href="https://drive.google.com/file/d/1KcR5K69uxWUKKn9ZujJ4CH-_MmcoPHVL/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver pieza</a>
+        <div class="frame" style="background-image:linear-gradient(rgba(28,58,74,.55),rgba(28,58,74,.55)),url('https://drive.google.com/uc?export=view&amp;id=1cpCwv652UNRQDwFD5hTHc6LwIEp0B-me'); background-size:cover; background-position:center;"><span class="play"></span><span class="label">Fantasía</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Producción cinematográfica</div>
+          <h4>Fantasía</h4>
+          <p class="desc">Alguien la sigue. Alguien le manda fotos de ella misma, tomadas a sus espaldas, fuera de su casa. Un corto de terror sobre el acecho silencioso que esconden las redes sociales — hasta el grito final.</p>
+          <a href="https://drive.google.com/file/d/1KcR5K69uxWUKKn9ZujJ4CH-_MmcoPHVL/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver pieza</a>
+        </div>
       </div>
-
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/16qEH38Ufu0BsHxw_A-p7Wruvr8MTSt3k/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <div class="meta">Cortometraje de ficción</div>
-        <h4>PSIBOT</h4>
-        <p class="desc">Corto sobre los riesgos de la IA como acompañante: un almuerzo entre amigos, bullying y un consejo que termina en tragedia.</p>
-        <a href="https://drive.google.com/file/d/16qEH38Ufu0BsHxw_A-p7Wruvr8MTSt3k/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver corto</a>
+        <div class="frame" style="background-image:linear-gradient(rgba(28,58,74,.55),rgba(28,58,74,.55)),url('https://drive.google.com/uc?export=view&amp;id=17U1DV7yt9HdRTsTQWmmrs23lhu-a1ziG'); background-size:cover; background-position:center;"><span class="play"></span><span class="label">PSIBOT</span></div>
+        <div class="demo-card-body">
+          <div class="meta">Cortometraje de ficción</div>
+          <h4>PSIBOT</h4>
+          <p class="desc">Corto sobre los riesgos de la IA como acompañante: un almuerzo entre amigos, bullying y un consejo que termina en tragedia.</p>
+          <a href="https://drive.google.com/file/d/16qEH38Ufu0BsHxw_A-p7Wruvr8MTSt3k/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver corto</a>
+        </div>
       </div>
     </div>
 
-    <div class="eyebrow" style="margin:56px 0 18px;"><span class="dot"></span> SPOTS MOTIVACIONALES</div>
+    <div class="tag" style="margin:56px 0 18px;"><span class="dot"></span>SPOTS MOTIVACIONALES</div>
     <div class="card-grid two">
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1Cotmm-Py5R496EIHLaAfoAaOzv34hNEj/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <h4>Spot motivacional — 1</h4>
-        <a href="https://drive.google.com/file/d/1Cotmm-Py5R496EIHLaAfoAaOzv34hNEj/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        <div class="frame"><span class="play"></span><span class="label">Spot</span></div>
+        <div class="demo-card-body"><h4>Spot motivacional — 1</h4>
+          <a href="https://drive.google.com/file/d/1Cotmm-Py5R496EIHLaAfoAaOzv34hNEj/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        </div>
       </div>
       <div class="demo-card">
-        <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/17mo3auHJr1wlcvypB5__Nr4h6qjh9t3W/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
-        <h4>Spot motivacional — 2</h4>
-        <a href="https://drive.google.com/file/d/17mo3auHJr1wlcvypB5__Nr4h6qjh9t3W/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        <div class="frame"><span class="play"></span><span class="label">Spot</span></div>
+        <div class="demo-card-body"><h4>Spot motivacional — 2</h4>
+          <a href="https://drive.google.com/file/d/17mo3auHJr1wlcvypB5__Nr4h6qjh9t3W/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Reproducir</a>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCCIÓN ACADÉMICA ===================== -->
+<section class="demo-section alt" id="academica">
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="tag"><span class="dot"></span>CREACIÓN DE CONTENIDO</div>
+      <h2>Producción que respalda la práctica.</h2>
+      <p>Publicaciones, ponencias y dirección de investigación en distintas áreas de contenido experto — a cargo de Karina Núñez.</p>
+    </div>
+
+    <div class="academic-list">
+      <div class="academic-item">
+        <div class="meta">Capítulo de libro</div>
+        <h4>La IA puede reemplazar al psicólogo</h4>
+        <p class="summary">Analiza los límites de la IA para reemplazar el rol del psicólogo, cuestionando las promesas de alivio inmediato y su vínculo con las pseudociencias frente al malestar humano.</p>
+        <p class="apa">Núñez, K. (2025). Discusiones sobre psicología y psicoterapia: "La IA puede reemplazar al psicólogo". Consuelo exprés: IA, pseudociencias y el rechazo al dolor. En G. Becerra, J. I. Mezzadra, &amp; G. Movia (Eds.), <em>Mitos y representaciones de la inteligencia artificial</em> (pp. 126-131). Editorial de la Universidad de Flores.</p>
+        <a href="https://hdl.handle.net/20.500.14340/2819" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Capítulo de libro</div>
+        <h4>La IA posee rasgos de identidad y agencia similares a los humanos</h4>
+        <p class="summary">Cuestiona la atribución de identidad y agencia humana a los sistemas de IA, distinguiendo entre simulación y subjetividad real en el vínculo humano-máquina.</p>
+        <p class="apa">Núñez, K. (2025). Discusiones sobre la condición social: "La IA posee rasgos de identidad y agencia similares a los humanos". Entre simulación y subjetividad: desnaturalizado el vínculo humano-máquina. En G. Becerra, J. I. Mezzadra, &amp; G. Movia (Eds.), <em>Mitos y representaciones de la inteligencia artificial</em> (pp. 64-70). Editorial de la Universidad de Flores.</p>
+        <a href="https://hdl.handle.net/20.500.14340/2794" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Capítulo de libro</div>
+        <h4>La IA es objetiva, neutral o imparcial</h4>
+        <p class="summary">Desmonta el mito de la neutralidad de la IA y analiza los riesgos de asumir que sus resultados están libres de sesgos o error.</p>
+        <p class="apa">Núñez, K. (2025). Discusiones sobre objetividad y neutralidad: "La IA es objetiva, neutral o imparcial". ¿Qué nos jugamos cuando creemos que la IA no se equivoca? En G. Becerra, J. I. Mezzadra, &amp; G. Movia (Eds.), <em>Mitos y representaciones de la Inteligencia Artificial</em> (pp. 34-42). Editorial de la Universidad de Flores.</p>
+        <a href="https://hdl.handle.net/20.500.14340/2793" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Paper académico</div>
+        <h4>Simulación clínica mediada por agentes conversacionales de IA en la formación práctica en psicología</h4>
+        <p class="summary">Estudio de caso con 110 estudiantes de psicología que interactuaron con cuatro agentes conversacionales de IA diseñados para simular situaciones clínicas y profesionales; evidenció alta implicación, motivación y transferencia entre teoría y práctica.</p>
+        <p class="apa">Núñez, K., &amp; Argentino, D. (2026). Simulación clínica mediada por agentes conversacionales de inteligencia artificial en la formación práctica en psicología. <em>El Faro. Revista Digital de Docencia Universitaria</em>, 3(3), 289-299. https://doi.org/10.63790/7j0fkb88</p>
+        <a href="https://doi.org/10.63790/7j0fkb88" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Ponencia</div>
+        <h4>Transformar la cultura: cuando la gestión también cuida</h4>
+        <p class="summary">Reflexiona sobre gestión, cultura organizacional y subjetividad a partir de dos experiencias de intervención —una empresa tecnológica multinacional y un hospital público de alta complejidad— proponiendo la gestión como un dispositivo de cuidado.</p>
+        <p class="apa">Núñez, K. (2025, 18 de octubre). <em>Transformar la cultura: cuando la gestión también cuida</em> [Ponencia]. Primera Jornada Institucional del Área Laboral, Organizacional y Comunitaria (ALOC). Universidad de Flores, Buenos Aires, Argentina.</p>
+        <a href="https://hdl.handle.net/20.500.14340/3422" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Artículo científico</div>
+        <h4>Obstrucción de vínculo paterno-filial vs función paterna</h4>
+        <p class="summary">Analiza los aspectos de la función paterna que se ponen en juego en la obstrucción del vínculo paterno-filial tras la separación, describiendo el llamado Síndrome del Padre Destruido.</p>
+        <p class="apa">Núñez, K., Caruso, J. M., &amp; Losada, A. V. (2025). Obstrucción de vínculo paterno-filial vs función paterna. <em>Revista Científica Arbitrada de la Fundación MenteClara</em>, 10. https://doi.org/10.32351/rca.v10.386</p>
+        <a href="https://hdl.handle.net/20.500.14340/2113" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+
+      <div class="academic-item">
+        <div class="meta">Dirección de tesis</div>
+        <h4>Narrativas sobre el bienestar laboral de teletrabajadores en San Miguel</h4>
+        <p class="summary">Investigación cualitativa con 12 teletrabajadores de San Miguel sobre cómo perciben su bienestar laboral, identificando tensiones entre aislamiento y sobrecarga, junto con beneficios de flexibilidad y conciliación con la vida familiar.</p>
+        <p class="apa">Ignarski, M. S. (2025). <em>Narrativas sobre el bienestar laboral de teletrabajadores en San Miguel</em> [Trabajo Final Integrador dirigido por K. Núñez, Universidad de Flores].</p>
+        <a href="https://hdl.handle.net/20.500.14340/2901" class="academic-link" target="_blank" rel="noopener">↗ Ver publicación</a>
+      </div>
+    </div>
+
+    <p class="academic-note">Publicaciones de acceso abierto bajo licencia Creative Commons BY-NC-ND. Los enlaces dirigen a los repositorios institucionales originales.</p>
   </div>
 </section>
 
@@ -615,7 +613,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-services">
-        <div class="eyebrow" style="margin-bottom:18px;"><span class="dot"></span> SERVICIOS</div>
+        <h4>Servicios</h4>
         <ul>
           <li>Desarrollo e-learning</li>
           <li>Producción audiovisual</li>
@@ -624,15 +622,12 @@
           <li>Diseño instruccional</li>
         </ul>
       </div>
-      <div class="author-line" style="font-size:14px;">
-        <strong style="display:block; font-family:'Fraunces',serif; font-size:22px; color:var(--paper); margin-bottom:8px;">INTEGRA by Karina Núñez</strong>
-        Learning Solutions Demo Center
+      <div class="footer-brand">
+        <strong>INTEGRA Consultora</strong>
+        <span>Learning Solutions Demo Center</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 — INTEGRA BY KARINA NÚÑEZ</span>
-      <span>DEMO N.º 01 / 04 — FIN</span>
-    </div>
+    <div class="footer-bottom">© 2026 INTEGRA Consultora · Buenos Aires, Argentina · integraconsultora.com.ar</div>
   </div>
 </footer>
 
