@@ -338,12 +338,21 @@
 
     <div class="card-grid">
       <div class="demo-card">
-        <div class="frame"><span class="badge-rec">Recomendado</span><span class="play"></span><span class="label">Rise 360</span></div>
+        <div class="frame course-thumb" onclick="openCourseModal('/rise/')">
+          <span class="badge-rec">Recomendado</span>
+          <div class="course-thumb-center">
+            <span class="course-thumb-tag">Módulo Interactivo</span>
+            <span class="course-thumb-title">Diseño<br>Organizacional</span>
+            <div class="course-play"><span>▶</span></div>
+          </div>
+          <span class="label">Rise 360</span>
+          <div class="course-thumb-ov"></div>
+        </div>
         <div class="demo-card-body">
-          <div class="meta">Curso · Rise</div>
-          <h4>Desarrollado en Rise 360</h4>
+          <div class="meta">Curso · Rise 360</div>
+          <h4>Diseño Organizacional — Fundamentos</h4>
           <ul class="checklist"><li>Responsive</li><li>Diseño instruccional</li><li>Interacciones</li><li>Evaluaciones</li></ul>
-          <a href="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" class="demo-link" target="_blank" rel="noopener">▶ Abrir demo</a>
+          <button onclick="openCourseModal('/rise/')" class="demo-link" style="cursor:pointer;border:none;background:none;padding:0;font:inherit;">▶ Abrir demo</button>
         </div>
       </div>
       <div class="demo-card">
