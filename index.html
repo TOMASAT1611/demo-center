@@ -102,9 +102,17 @@
   .section-head p{ color:var(--gray); font-size:17px; }
 
   .index-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    display:grid; grid-template-columns:repeat(6,1fr); gap:20px;
   }
-  @media (max-width:980px){ .index-grid{ grid-template-columns:repeat(2,1fr); } }
+  .index-grid>*:nth-child(1){grid-column:1/3;}
+  .index-grid>*:nth-child(2){grid-column:3/5;}
+  .index-grid>*:nth-child(3){grid-column:5/7;}
+  .index-grid>*:nth-child(4){grid-column:2/4;}
+  .index-grid>*:nth-child(5){grid-column:4/6;}
+  @media (max-width:980px){
+    .index-grid{ grid-template-columns:repeat(2,1fr); }
+    .index-grid>*:nth-child(n){ grid-column:auto; }
+  }
   @media (max-width:560px){ .index-grid{ grid-template-columns:1fr; } }
 
   .index-card{
@@ -476,9 +484,9 @@
         <div class="frame" style="overflow:hidden;padding:0;"><iframe src="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/preview" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe></div>
         <div class="demo-card-body">
           <div class="meta">IA · Video</div>
-          <h4>Explicador con 4 avatares</h4>
+          <h4>Video con 4 avatares</h4>
           <p class="desc">Video explicativo con texto en pantalla y 4 avatares IA embebidos, que se turnan para desarrollar la teoría.</p>
-          <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=sharing" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
+          <a href="https://drive.google.com/file/d/1J_PlDL62-EQPA8NX7OtQncSP5jtQmzSI/view?usp=drive_link" class="demo-link" target="_blank" rel="noopener">▶ Ver video</a>
         </div>
       </div>
     </div>
