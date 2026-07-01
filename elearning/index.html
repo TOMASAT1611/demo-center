@@ -10,213 +10,640 @@
 @font-face{font-family:'Lato';src:url('/rise/assets/fonts/Lato-Italic.woff') format('woff');font-weight:400;font-style:italic;}
 @font-face{font-family:'Lato';src:url('/rise/assets/fonts/Lato-Bold.woff') format('woff');font-weight:700;}
 @font-face{font-family:'Lato';src:url('/rise/assets/fonts/Lato-Black.woff') format('woff');font-weight:900;}
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;overflow:hidden;font-family:'Lato','Segoe UI',sans-serif;background:#eef2f4;}
 #player{display:flex;flex-direction:column;height:100%;}
-#topbar{height:50px;background:#1A3A4A;display:flex;align-items:center;padding:0 20px;justify-content:space-between;flex:none;gap:16px;}
+
+/* TOP BAR */
+#topbar{height:50px;background:#1C3A4A;display:flex;align-items:center;padding:0 20px;justify-content:space-between;flex:none;}
 .tb-l{display:flex;align-items:center;gap:10px;}
 .tb-logo{width:30px;height:30px;border-radius:6px;background:#2d8c7f;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex:none;}
-.tb-title{font-size:13.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tb-r{flex:none;} .tb-ctr{font-size:12px;color:rgba(255,255,255,.55);}
+.tb-title{font-size:13px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tb-ctr{font-size:12px;color:rgba(255,255,255,.55);}
 #prog-wrap{height:3px;background:rgba(255,255,255,.12);flex:none;}
 #prog-bar{height:100%;background:#2d8c7f;transition:width .35s;}
-#content{flex:1;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px 80px;}
-.slide{display:none;width:100%;max-width:780px;} .slide.active{display:block;}
-#s0{max-width:100%;padding:0;margin-bottom:-28px;}
-#s0 .cover{min-height:calc(100vh - 53px);background:linear-gradient(135deg,#1A3A4A 0%,#0f2830 100%);position:relative;display:flex;align-items:flex-end;}
-.cover-body{position:relative;z-index:1;padding:52px 56px;max-width:560px;}
-.c-tag{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2d8c7f;margin-bottom:14px;}
-.c-title{font-size:clamp(26px,4vw,40px);font-weight:900;color:#fff;line-height:1.12;margin-bottom:8px;}
-.c-sub{font-size:16.5px;font-weight:300;color:rgba(255,255,255,.8);margin-bottom:20px;}
-.c-rule{width:48px;height:3px;background:#2d8c7f;margin-bottom:20px;}
-.c-desc{font-size:15px;color:rgba(255,255,255,.75);line-height:1.68;margin-bottom:30px;max-width:460px;}
-.c-brand{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;}
-.c-btn{display:inline-flex;align-items:center;gap:9px;background:#2d8c7f;color:#fff;border:none;padding:13px 32px;border-radius:26px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .15s;font-family:'Lato',sans-serif;}
-.c-btn:hover{background:#1e6b62;}
-.card{background:#fff;border-radius:10px;box-shadow:0 2px 14px rgba(0,0,0,.09);overflow:hidden;}
-.card-hdr{background:#2d8c7f;padding:18px 26px;display:flex;align-items:center;gap:13px;}
-.ch-ico{font-size:22px;line-height:1;flex:none;} .ch-title{font-size:19px;font-weight:900;color:#fff;}
-.card-body{padding:24px 26px 28px;} .lede{font-size:15.5px;color:#2a2a2a;line-height:1.72;margin-bottom:20px;}
-.obj-list{display:flex;flex-direction:column;gap:11px;}
-.obj-row{display:flex;gap:13px;align-items:flex-start;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:13px 16px;}
-.obj-n{width:30px;height:30px;border-radius:50%;background:#2d8c7f;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
-.obj-text{font-size:15px;color:#1a1a1a;line-height:1.55;padding-top:5px;}
-.obj-text strong{display:block;color:#2d8c7f;font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
-.itab-row{display:flex;border-bottom:2px solid #eee;overflow-x:auto;}
-.itab{padding:11px 16px;background:none;border:none;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.03em;color:#999;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all .15s;font-family:'Lato',sans-serif;}
-.itab.on{color:#2d8c7f;border-bottom-color:#2d8c7f;}
-.itab-panel{display:none;padding:18px 0 2px;} .itab-panel.on{display:block;}
-.itab-panel p{font-size:15px;color:#2a2a2a;line-height:1.7;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+
+/* CONTENT */
+#content{flex:1;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px 72px;}
+.slide{display:none;width:100%;max-width:800px;}
+.slide.active{display:block;}
+
+/* ── COVER ── */
+#s0{max-width:100%;padding:0;}
+#s0 .cover{min-height:calc(100vh - 53px);background:url('/rise/assets/personas.jpg') center/cover no-repeat;position:relative;display:flex;align-items:flex-end;}
+#s0 .cover::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(28,58,74,.95) 0%,rgba(28,58,74,.8) 50%,rgba(28,58,74,.32) 100%);}
+.cv{position:relative;z-index:1;padding:52px 60px;max-width:540px;}
+.cv-tag{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#2d8c7f;margin-bottom:14px;}
+.cv-t{font-size:clamp(26px,4vw,42px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:6px;}
+.cv-s{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);margin-bottom:18px;}
+.cv-rule{width:48px;height:3px;background:#2d8c7f;margin-bottom:20px;}
+.cv-desc{font-size:14.5px;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:28px;max-width:420px;}
+.cv-auth{display:flex;align-items:center;gap:11px;margin-bottom:30px;}
+.cv-av{width:40px;height:40px;border-radius:50%;background:#2d8c7f;overflow:hidden;flex:none;display:flex;align-items:center;justify-content:center;}
+.cv-av img{width:100%;height:100%;object-fit:cover;}
+.cv-av-fb{font-size:13px;font-weight:700;color:#fff;}
+.cv-meta strong{display:block;font-size:15px;color:#fff;font-weight:700;}
+.cv-meta span{font-size:12.5px;color:rgba(255,255,255,.6);}
+.cv-btn{display:inline-flex;align-items:center;gap:8px;background:#2d8c7f;color:#fff;border:none;padding:12px 30px;border-radius:24px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .15s;font-family:'Lato',sans-serif;}
+.cv-btn:hover{background:#1e6b62;}
+
+/* ── CARD ── */
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 14px rgba(0,0,0,.09);overflow:hidden;margin-bottom:14px;}
+.card-hdr{background:#2d8c7f;padding:16px 24px;display:flex;align-items:center;gap:12px;}
+.ch-ico{font-size:20px;line-height:1;flex:none;}
+.ch-t{font-size:18px;font-weight:900;color:#fff;}
+.ch-sub{font-size:12px;color:rgba(255,255,255,.7);font-weight:400;margin-top:1px;}
+.card-body{padding:22px 24px 26px;}
+.lede{font-size:15px;color:#2a2a2a;line-height:1.72;margin-bottom:18px;}
+.lede-sm{font-size:14px;color:#555;line-height:1.7;margin-bottom:14px;}
+
+/* lesson header variant */
+.card-hdr.lx{background:#1C3A4A;}
+.lx-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2d8c7f;}
+
+/* ── TIMELINE / OBJECTIVES ── */
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:560px){.obj-grid{grid-template-columns:1fr;}}
+.obj-card{background:#f6fcfb;border:1.5px solid #d5eeea;border-radius:8px;padding:16px;cursor:pointer;transition:all .2s;position:relative;}
+.obj-card:hover,.obj-card.open{background:#e8f7f5;border-color:#2d8c7f;}
+.obj-card.open .obj-desc{display:block;}
+.obj-n-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.obj-n{width:28px;height:28px;border-radius:50%;background:#2d8c7f;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none;}
+.obj-ttl{font-size:14px;font-weight:700;color:#1C3A4A;}
+.obj-desc{display:none;font-size:13.5px;color:#444;line-height:1.6;margin-top:6px;padding-top:8px;border-top:1px solid #c8e8e5;}
+.obj-caption{text-align:center;font-size:13px;color:#888;margin-top:14px;font-style:italic;}
+
+/* ── IDEAS 3 CARDS ── */
+.ideas-grid{display:flex;flex-direction:column;gap:11px;}
+.idea-card{display:flex;gap:13px;align-items:flex-start;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:14px 16px;}
+.idea-n{width:32px;height:32px;border-radius:50%;background:#1C3A4A;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
+.idea-content h4{font-size:15px;font-weight:700;color:#1C3A4A;margin-bottom:4px;}
+.idea-content p{font-size:14px;color:#444;line-height:1.6;}
+
+/* ── TWO-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:4px;}
 @media(max-width:580px){.two-col{grid-template-columns:1fr;}}
-.col-card{background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:18px;}
-.col-card h3{font-size:14px;font-weight:900;color:#2d8c7f;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
-.col-card p,.col-card li{font-size:14px;color:#333;line-height:1.65;}
-.col-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:8px;}
-.col-list li{display:flex;gap:9px;}
+.col-card{background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:16px;}
+.col-card h3{font-size:14px;font-weight:900;color:#2d8c7f;margin-bottom:9px;text-transform:uppercase;letter-spacing:.05em;}
+.col-card p{font-size:14px;color:#333;line-height:1.65;margin-bottom:10px;}
+.col-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.col-list li{display:flex;gap:8px;font-size:13.5px;color:#333;line-height:1.5;}
 .col-list li::before{content:'';width:7px;height:7px;border-radius:50%;background:#2d8c7f;flex:none;margin-top:5px;}
-.impact{margin-top:20px;background:linear-gradient(120deg,#1A3A4A 0%,#2d8c7f 100%);border-radius:8px;padding:18px 24px;font-size:15.5px;font-style:italic;color:#fff;text-align:center;font-weight:700;line-height:1.55;}
-.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-@media(max-width:680px){.idea-grid{grid-template-columns:1fr;}}
-.idea-card{background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:16px;}
-.idea-card h3{font-size:14px;font-weight:900;color:#2d8c7f;margin-bottom:8px;}
-.idea-card p{font-size:14px;color:#333;line-height:1.6;}
+.impact{margin-top:16px;background:linear-gradient(120deg,#1C3A4A,#2d8c7f);border-radius:8px;padding:16px 22px;font-size:15px;font-style:italic;color:#fff;text-align:center;font-weight:700;line-height:1.5;}
+
+/* ── MODELO CARDS (slide 7) ── */
+.model-cards{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:4px;}
+@media(max-width:580px){.model-cards{grid-template-columns:1fr;}}
+.model-card{border-radius:8px;padding:16px;overflow:hidden;}
+.model-card.mec{background:#f0f4f8;border:1px solid #c8d4dc;}
+.model-card.org{background:#f0f9f7;border:1px solid #b8e0da;}
+.model-card h3{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.model-card.mec h3{color:#1C3A4A;}
+.model-card.org h3{color:#1a6b5e;}
+.model-sub{font-size:12px;color:#888;margin-bottom:10px;font-style:italic;}
+.model-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.model-list li{display:flex;gap:8px;font-size:13.5px;color:#333;line-height:1.45;}
+.model-list li::before{content:'▸';color:#2d8c7f;flex:none;font-size:12px;margin-top:1px;}
+
+/* ── TABS (slide 7 supplement) ── */
+.itab-row{display:flex;border-bottom:2px solid #eee;}
+.itab{padding:10px 16px;background:none;border:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.03em;color:#999;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all .15s;font-family:'Lato',sans-serif;}
+.itab.on{color:#2d8c7f;border-bottom-color:#2d8c7f;}
+.itab-panel{display:none;padding:16px 0 2px;}
+.itab-panel.on{display:block;}
+.itab-panel p{font-size:15px;color:#2a2a2a;line-height:1.7;}
+
+/* ── CAROUSEL ── */
 .car{border:1px solid #d5eeea;border-radius:8px;overflow:hidden;margin-top:6px;}
-.car-hdr{background:#2d8c7f;padding:8px 20px;font-size:12px;font-weight:700;color:#fff;letter-spacing:.08em;text-align:center;text-transform:uppercase;}
-.car-body{padding:20px 22px;min-height:100px;} .car-ttl{font-size:17px;font-weight:900;color:#1A3A4A;margin-bottom:8px;} .car-txt{font-size:14.5px;color:#444;line-height:1.65;}
-.car-foot{padding:10px 18px;border-top:1px solid #eee;display:flex;align-items:center;gap:10px;background:#fafafa;}
-.car-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid #ccc;background:#fff;cursor:pointer;font-size:14px;color:#666;display:flex;align-items:center;justify-content:center;transition:all .15s;flex:none;font-family:'Lato',sans-serif;}
-.car-btn:hover:not(:disabled){border-color:#2d8c7f;color:#2d8c7f;} .car-btn:disabled{opacity:.25;cursor:default;}
+.car-hdr{background:#2d8c7f;padding:7px 18px;font-size:11.5px;font-weight:700;color:#fff;letter-spacing:.08em;text-align:center;text-transform:uppercase;}
+.car-body{padding:18px 20px;min-height:96px;}
+.car-ttl{font-size:17px;font-weight:900;color:#1C3A4A;margin-bottom:7px;}
+.car-txt{font-size:14px;color:#444;line-height:1.65;}
+.car-foot{padding:9px 16px;border-top:1px solid #eee;display:flex;align-items:center;gap:10px;background:#fafafa;}
+.car-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid #ccc;background:#fff;cursor:pointer;font-size:13px;color:#666;display:flex;align-items:center;justify-content:center;transition:all .15s;flex:none;font-family:'Lato',sans-serif;}
+.car-btn:hover:not(:disabled){border-color:#2d8c7f;color:#2d8c7f;}
+.car-btn:disabled{opacity:.25;cursor:default;}
 .car-dots{display:flex;gap:6px;flex:1;justify-content:center;}
-.car-dot{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .2s;} .car-dot.on{background:#2d8c7f;}
-.q-ctr{font-size:12px;color:#999;margin-bottom:12px;text-align:right;}
-.q-text{font-size:16px;font-weight:700;color:#111;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid #eee;line-height:1.4;}
-.q-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
-.q-opt{display:flex;align-items:center;gap:11px;padding:11px 14px;border:1.5px solid #e8e8e8;border-radius:8px;cursor:pointer;transition:all .15s;}
+.car-dot{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .2s;}
+.car-dot.on{background:#2d8c7f;}
+
+/* ── QUIZ ── */
+.q-ctr{font-size:12px;color:#999;margin-bottom:10px;text-align:right;}
+.q-text{font-size:16px;font-weight:700;color:#111;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #eee;line-height:1.4;}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;}
+.q-opt{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1.5px solid #e8e8e8;border-radius:8px;cursor:pointer;transition:all .15s;}
 .q-opt:hover{border-color:#2d8c7f;background:#f6fcfb;}
-.q-opt input{accent-color:#2d8c7f;width:16px;height:16px;cursor:pointer;flex:none;}
-.q-opt label{font-size:14.5px;color:#333;cursor:pointer;line-height:1.4;}
+.q-opt input{accent-color:#2d8c7f;width:15px;height:15px;cursor:pointer;flex:none;}
+.q-opt label{font-size:14px;color:#333;cursor:pointer;line-height:1.4;}
 .q-foot{display:flex;justify-content:flex-end;}
-.sub-btn{background:#2d8c7f;color:#fff;border:none;padding:10px 28px;border-radius:20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:background .15s;font-family:'Lato',sans-serif;}
-.sub-btn:hover:not(:disabled){background:#1e6b62;} .sub-btn:disabled{background:#ccc;cursor:default;}
-.q-fb{display:none;margin-top:12px;padding:10px 14px;border-radius:6px;font-size:14px;font-weight:600;} .q-fb.show{display:block;} .q-fb.ok{background:#e8f5e9;color:#2e7d32;} .q-fb.bad{background:#fce8e6;color:#c62828;}
-.result-wrap{text-align:center;padding:36px 24px 28px;}
-.res-circle{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#2d8c7f,#1A3A4A);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 22px;}
-.res-pct{font-size:30px;font-weight:900;color:#fff;} .res-lbl{font-size:10.5px;color:rgba(255,255,255,.65);letter-spacing:.08em;text-transform:uppercase;}
-.res-msg{font-size:19px;font-weight:900;color:#1A3A4A;margin-bottom:8px;} .res-sub{font-size:14.5px;color:#555;line-height:1.65;max-width:400px;margin:0 auto 24px;}
-.res-replay{background:#1A3A4A;color:#fff;border:none;padding:11px 28px;border-radius:22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:background .15s;}
+.sub-btn{background:#2d8c7f;color:#fff;border:none;padding:9px 26px;border-radius:20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:background .15s;font-family:'Lato',sans-serif;}
+.sub-btn:hover:not(:disabled){background:#1e6b62;}
+.sub-btn:disabled{background:#ccc;cursor:default;}
+.q-fb{display:none;margin-top:10px;padding:9px 13px;border-radius:6px;font-size:13.5px;font-weight:600;}
+.q-fb.show{display:block;}
+.q-fb.ok{background:#e8f5e9;color:#2e7d32;}
+.q-fb.bad{background:#fce8e6;color:#c62828;}
+
+/* ── SCENARIO ── */
+.scene-wrap{display:flex;gap:20px;align-items:flex-start;}
+.scene-char{flex:none;width:200px;display:flex;flex-direction:column;align-items:center;}
+.scene-char img{width:180px;height:auto;border-radius:8px;transition:opacity .3s;}
+.scene-char-name{font-size:12px;color:#888;margin-top:6px;text-align:center;}
+.scene-content{flex:1;}
+.speech-bubble{background:#f6fcfb;border:1.5px solid #d5eeea;border-radius:12px;padding:16px 18px;font-size:15px;color:#222;line-height:1.65;margin-bottom:16px;position:relative;}
+.speech-bubble::before{content:'';position:absolute;left:-12px;top:20px;border:6px solid transparent;border-right-color:#d5eeea;}
+.speech-bubble::after{content:'';position:absolute;left:-10px;top:21px;border:5px solid transparent;border-right-color:#f6fcfb;}
+.scene-replies{display:flex;flex-direction:column;gap:9px;}
+.reply-btn{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid #e8e8e8;border-radius:8px;background:#fff;cursor:pointer;text-align:left;font-family:'Lato',sans-serif;font-size:14px;color:#333;line-height:1.45;transition:all .15s;}
+.reply-btn:hover:not(:disabled){border-color:#2d8c7f;background:#f6fcfb;}
+.reply-btn:disabled{opacity:.5;cursor:default;}
+.reply-ico{width:22px;height:22px;border-radius:50%;background:#e8e8e8;flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#666;margin-top:1px;}
+.scene-feedback{padding:14px;border-radius:8px;margin-top:12px;font-size:14.5px;line-height:1.6;display:none;}
+.scene-feedback.show{display:block;}
+.scene-feedback.ok{background:#e8f5e9;border:1px solid #a5d6a7;color:#1b5e20;}
+.scene-feedback.bad{background:#fce8e6;border:1px solid #ef9a9a;color:#b71c1c;}
+.scene-retry{background:#1C3A4A;color:#fff;border:none;padding:8px 20px;border-radius:18px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;margin-top:10px;transition:background .15s;}
+.scene-retry:hover{background:#2d8c7f;}
+
+/* ── SYNTHESIS ── */
+.synth-quote{font-size:20px;font-weight:900;color:#1C3A4A;line-height:1.35;margin-bottom:20px;padding-bottom:20px;border-bottom:2px solid #e8e8e8;}
+.synth-body{font-size:15px;color:#444;line-height:1.72;margin-bottom:20px;}
+.synth-brand{text-align:right;font-size:12.5px;color:#bbb;font-style:italic;}
+
+/* ── RESULT ── */
+.result-wrap{text-align:center;padding:34px 24px 28px;}
+.res-circle{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#2d8c7f,#1C3A4A);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px;}
+.res-pct{font-size:30px;font-weight:900;color:#fff;}
+.res-lbl{font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.08em;text-transform:uppercase;}
+.res-msg{font-size:18px;font-weight:900;color:#1C3A4A;margin-bottom:8px;}
+.res-sub{font-size:14px;color:#555;line-height:1.65;max-width:400px;margin:0 auto 22px;}
+.res-replay{background:#1C3A4A;color:#fff;border:none;padding:10px 26px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:background .15s;}
 .res-replay:hover{background:#2d8c7f;}
-.sc-wrap{display:grid;grid-template-columns:1fr 180px;gap:18px;align-items:start;}
-@media(max-width:640px){.sc-wrap{grid-template-columns:1fr;}}
-.sc-speech{background:#f6fcfb;border:1px solid #d5eeea;border-radius:10px;padding:18px;font-size:15px;color:#222;line-height:1.65;min-height:120px;}
-.sc-char{text-align:center;} .sc-char img{max-width:160px;width:100%;height:auto;}
-.sc-replies{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
-.sc-reply{text-align:left;background:#fff;border:1.5px solid #d5eeea;border-radius:8px;padding:12px 14px;font-size:14px;color:#1A3A4A;cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif;}
-.sc-reply:hover{border-color:#2d8c7f;background:#f6fcfb;}
-.sc-note{margin-top:14px;font-size:13px;color:#666;font-style:italic;}
-#bottombar{height:52px;background:#fff;border-top:1px solid #e0e0e0;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex:none;}
-.bb-ctr{font-size:13px;color:#999;} .bb-btns{display:flex;gap:10px;}
-.bb-btn{padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif;}
-.bb-prev{background:#fff;border:1.5px solid #ddd;color:#555;} .bb-prev:hover:not(:disabled){border-color:#2d8c7f;color:#2d8c7f;}
-.bb-next{background:#2d8c7f;border:1.5px solid #2d8c7f;color:#fff;} .bb-next:hover:not(:disabled){background:#1e6b62;border-color:#1e6b62;}
+
+/* ── BOTTOM BAR ── */
+#bottombar{height:50px;background:#fff;border-top:1px solid #e0e0e0;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex:none;}
+.bb-ctr{font-size:12.5px;color:#999;}
+.bb-btns{display:flex;gap:9px;}
+.bb-btn{padding:7px 18px;border-radius:18px;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif;}
+.bb-prev{background:#fff;border:1.5px solid #ddd;color:#555;}
+.bb-prev:hover:not(:disabled){border-color:#2d8c7f;color:#2d8c7f;}
+.bb-next{background:#2d8c7f;border:1.5px solid #2d8c7f;color:#fff;}
+.bb-next:hover:not(:disabled){background:#1e6b62;border-color:#1e6b62;}
 .bb-btn:disabled{opacity:.28;cursor:default;}
 </style>
 </head>
 <body>
 <div id="player">
-<div id="topbar"><div class="tb-l"><div class="tb-logo">IN</div><div class="tb-title">Diseño Organizacional — Fundamentos</div></div><div class="tb-r"><span class="tb-ctr" id="tbctr">1 / 15</span></div></div>
-<div id="prog-wrap"><div id="prog-bar" style="width:7%"></div></div>
-<div id="content">
-<div class="slide active" id="s0" style="max-width:100%;padding:0;">
-  <div class="cover"><div class="cover-body">
-    <p class="c-tag">MÓDULO FORMATIVO</p>
-    <h1 class="c-title">Diseño Organizacional</h1>
-    <p class="c-sub">Fundamentos</p>
-    <div class="c-rule"></div>
-    <p class="c-desc">Concepto · diferenciación e integración · modelos mecanicista y orgánico · tipos de departamentalización</p>
-    <p class="c-brand">Integra Consultora</p>
-    <button class="c-btn" onclick="goSlide(1)">Comenzar →</button>
-  </div></div>
-</div>
-<div class="slide" id="s1"><div class="card"><div class="card-hdr"><span class="ch-ico">🎯</span><span class="ch-title">Objetivos de aprendizaje</span></div><div class="card-body"><p class="lede">Recorré las competencias que vas a desarrollar en este módulo.</p><div class="obj-list"><div class="obj-row"><div class="obj-n">1</div><p class="obj-text"><strong>Concepto</strong>Comprender qué es el diseño organizacional y por qué es clave para el éxito de una organización.</p></div><div class="obj-row"><div class="obj-n">2</div><p class="obj-text"><strong>Diferenciación e integración</strong>Distinguir estos dos procesos opuestos y complementarios que sostienen el diseño.</p></div><div class="obj-row"><div class="obj-n">3</div><p class="obj-text"><strong>Modelos</strong>Diferenciar el modelo mecanicista del orgánico y saber cuándo conviene cada uno.</p></div><div class="obj-row"><div class="obj-n">4</div><p class="obj-text"><strong>Departamentalización</strong>Identificar los distintos criterios para agrupar tareas y personas en una organización.</p></div></div></div></div></div>
-<div class="slide" id="s2"><div class="card"><div class="card-hdr"><span class="ch-ico">🏛️</span><span class="ch-title">¿Qué es el diseño organizacional?</span></div><div class="card-body"><p class="lede">Es el proceso de construir y adaptar continuamente la estructura de una organización para que alcance sus objetivos y estrategias. Esa estructura ordena y conecta sus áreas, personas, tareas y recursos.</p><div class="impact" style="margin-top:0;">“El diseño es el ADN de la organización.”</div></div></div></div>
-<div class="slide" id="s3"><div class="card"><div class="card-hdr"><span class="ch-ico">💡</span><span class="ch-title">Ideas centrales</span></div><div class="card-body"><div class="idea-grid"><div class="idea-card"><h3>La estructura como esqueleto</h3><p>Contiene e integra órganos, personas, tareas, relaciones y recursos. Coordina los elementos vitales de la organización.</p></div><div class="idea-card"><h3>Doble dependencia</h3><p>Depende hacia afuera de la estrategia, y hacia adentro de la tecnología que la organización utiliza.</p></div><div class="idea-card"><h3>Cuatro variables</h3><p>Factores ambientales, dimensiones anatómicas, aspectos de las operaciones y consecuencias conductuales.</p></div></div></div></div></div>
-<div class="slide" id="s4"><div class="card"><div class="card-hdr"><span class="ch-ico">⚖️</span><span class="ch-title">Diferenciación e integración</span></div><div class="card-body"><p class="lede">El diseño organizacional se sostiene sobre dos procesos opuestos y complementarios. Uno divide y especializa el trabajo; el otro coordina y une las partes para que la organización funcione como un todo.</p></div></div></div>
-<div class="slide" id="s5"><div class="card"><div class="card-hdr"><span class="ch-ico">🔀</span><span class="ch-title">Dos procesos opuestos</span></div><div class="card-body">
-  <div class="two-col">
-    <div class="col-card"><h3>Diferenciación</h3><p>Divide y especializa el trabajo</p><ul class="col-list"><li>Horizontal → estructuras planas</li><li>Vertical → estructuras piramidales</li><li>Espacial → dispersión geográfica</li></ul></div>
-    <div class="col-card"><h3>Integración</h3><p>Coordina y une las partes</p><ul class="col-list"><li>Vertical → jerarquía, reglas y procedimientos</li><li>Horizontal → equipos y fuerzas de tarea</li></ul></div>
-  </div>
-  <div class="impact">Una especializa y separa; la otra articula y une.</div>
-</div></div></div>
-<div class="slide" id="s6"><div class="card"><div class="card-hdr"><span class="ch-ico">🏗️</span><span class="ch-title">Modelo mecanicista y modelo orgánico</span></div><div class="card-body"><p class="lede">Según las dimensiones del diseño —formalización, centralización, jerarquía, especialización— una organización se ubica entre dos modelos opuestos, que son los extremos de muchas combinaciones posibles.</p></div></div></div>
-<div class="slide" id="s7"><div class="card"><div class="card-hdr"><span class="ch-ico">🔄</span><span class="ch-title">Dos modelos</span></div><div class="card-body">
-  <div class="itab-row"><button class="itab on" onclick="iTab(this,'m0')">MECANICISTA</button><button class="itab" onclick="iTab(this,'m1')">ORGÁNICO</button></div><div class="itab-panel on" id="m0"><p>Estructura rígida y piramidal, típica de la era industrial. Adecuada para entornos estables. Se caracteriza por alta formalización, centralización de decisiones, autoridad jerárquica, especialización y comunicación vertical y formal.</p></div><div class="itab-panel" id="m1"><p>Estructura flexible y circular, propia de la era del conocimiento. Adecuada para entornos dinámicos. Tiene poca formalización, decisiones descentralizadas, equipos multifuncionales y comunicación informal en red. Es adaptable e innovadora.</p></div>
-  <div class="impact" style="font-size:15px;padding:16px 22px;margin-top:18px;">No hay un modelo mejor en abstracto: el adecuado depende del entorno, la estrategia y la tecnología de cada organización.</div>
-</div></div></div>
-<div class="slide" id="s8"><div class="card"><div class="card-hdr"><span class="ch-ico">🗂️</span><span class="ch-title">Tipos de departamentalización</span></div><div class="card-body"><p class="lede">A medida que las organizaciones crecen, agrupan tareas y personas en departamentos según distintos criterios. En la práctica, cada organización combina varios de ellos.</p></div></div></div>
-<div class="slide" id="s9"><div class="card"><div class="card-hdr"><span class="ch-ico">📋</span><span class="ch-title">Cinco criterios</span></div><div class="card-body">
-  <div class="car"><div class="car-hdr" id="c-hdr"></div><div class="car-body"><div class="car-ttl" id="c-ttl"></div><div class="car-txt" id="c-txt"></div></div>
-  <div class="car-foot"><button class="car-btn" id="cprev" onclick="cNav(-1)" disabled>‹</button><div class="car-dots" id="cdots"></div><button class="car-btn" id="cnext" onclick="cNav(1)">›</button></div></div>
-</div></div></div>
-<div class="slide" id="s10"><div class="card"><div class="card-hdr"><span class="ch-ico">✨</span><span class="ch-title">En síntesis</span></div><div class="card-body">
-  <p class="lede" style="font-weight:700;color:#1A3A4A;">El diseño organizacional busca el equilibrio entre especializar y coordinar.</p>
-  <p class="lede">Ninguna organización usa un solo criterio: combina varios según su tamaño, estrategia y entorno. La clave está en equilibrar la especialización de cada área con la coordinación entre todas.</p>
-  <p style="font-size:13px;color:#888;margin-top:12px;">Contenido desarrollado por Integra Consultora</p>
-</div></div></div>
-<div class="slide" id="s11"><div class="card"><div class="card-hdr"><span class="ch-ico">📝</span><span class="ch-title">Evaluación final</span></div><div class="card-body" id="quiz-area"></div></div></div>
-<div class="slide" id="s12"><div class="card"><div class="card-hdr"><span class="ch-ico">🎭</span><span class="ch-title">Role-Play: elegí la estructura adecuada</span></div><div class="card-body" id="scenario-area"></div></div></div>
-<div class="slide" id="s13"><div class="card"><div class="card-hdr"><span class="ch-ico">🎓</span><span class="ch-title">Módulo completado</span></div><div class="result-wrap">
-  <div class="res-circle"><span class="res-pct" id="res-pct">—</span><span class="res-lbl">Score</span></div>
-  <p class="res-msg" id="res-msg"></p><p class="res-sub" id="res-sub"></p>
-  <button class="res-replay" onclick="restartCourse()">↺ Volver a empezar</button>
-</div></div></div>
-</div>
-<div id="bottombar"><span class="bb-ctr" id="bbctr"></span><div class="bb-btns">
-  <button class="bb-btn bb-prev" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
-  <button class="bb-btn bb-next" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
-</div></div></div>
-<script>
-const STEPS=[{"t": "Funcional", "x": "→ Por funciones similares: finanzas, producción, marketing, RRHH. Ventaja: economías de escala. Riesgo: convierte las áreas en \" feudos \"."}, {"t": "Por productos", "x": "→ Agrupa todo lo relacionado con cada producto o servicio, y hace a cada unidad responsable de su desempeño."}, {"t": "Geográfica", "x": "→ Agrupa según el territorio o región que atiende la organización."}, {"t": "Por procesos", "x": "→ Agrupa a lo largo del flujo productivo; cada área se especializa en una fase."}, {"t": "P or clientes", "x": "→ Agrupa según el tipo de cliente ( damas, caballeros, niños; o empresas grandes, medianas, pequeñas)."}];
-const QS=[{"q": "El diseño organizacional se define como …", "opts": ["Un organigrama fijo e inmutable.", "El proceso de construir y adaptar continuamente la estructura para alcanzar objetivos", "La cantidad de empleados de una empresa"], "ok": 1}, {"q": "La diferenciación implica …", "opts": ["Dividir el trabajo y especializar órganos y personas.", "Coordinar y unir las partes.", "Eliminar la jerarquía"], "ok": 0}, {"q": "El modelo orgánico se caracteriza por …", "opts": ["Forma piramidal y rígida.", "Flexibilidad, equipos multifuncionales y comunicación informal.", "Alta formalización y centralización."], "ok": 1}, {"q": "La departamentalización funcional agrupa por …", "opts": ["Región geográfica.", "Tipo de cliente.", "Funciones similares ( finanzas, marketing, producción, RRHH)."], "ok": 2}, {"q": "El modelo mecanicista es más adecuado para …", "opts": ["Entornos estables con pocos cambios.", "Entornos dinámicos y cambiantes.", "Empresas sin estructura."], "ok": 0}];
-const SCENES=[{"id": "1", "speech": "Hola, soy gerente de una empresa que está creciendo muy rápido. Antes éramos diez personas y ahora somos cincuenta. Siento que estamos desordenados, nadie sabe bien de quién depende. ¿Qué tipo de estructura me conviene?", "emotion": "normal", "replies": [{"text": "Contame primero sobre tu entorno: ¿es estable o cambia mucho? Según eso evaluamos si te conviene un modelo más mecanicista u orgánico.", "target": "2"}, {"text": "Lo mejor siempre es una estructura jerárquica rígida, sin dudas.", "target": "3"}, {"text": "No te preocupes por la estructura, eso se resuelve solo con el tiempo.", "target": "4"}]}, {"id": "2", "speech": "¡Exacto! Nunca lo había pensado así. Nuestro mercado cambia todo el tiempo, así que entiendo que necesitamos algo más flexible.", "emotion": "happy", "replies": []}, {"id": "3", "speech": "Mmm... una estructura rígida me suena a más burocracia. ¿No me va a quitar agilidad justo ahora que necesito moverme rápido?", "emotion": "puzzled", "replies": []}, {"id": "4", "speech": "No sé... si lo dejo pasar siento que el desorden va a empeorar. Esperaba una recomendación más concreta de tu parte.", "emotion": "unhappy", "replies": []}];
-const TOTAL=13;
 
+<div id="topbar">
+  <div class="tb-l">
+    <div class="tb-logo">IN</div>
+    <div class="tb-title">Diseño Organizacional — Fundamentos</div>
+  </div>
+  <span class="tb-ctr" id="tbctr">1 / 14</span>
+</div>
+<div id="prog-wrap"><div id="prog-bar" style="width:7.14%"></div></div>
+
+<div id="content">
+
+<!-- S0: PORTADA -->
+<div class="slide active" id="s0" style="max-width:100%;padding:0;">
+  <div class="cover">
+    <div class="cv">
+      <p class="cv-tag">Módulo Formativo · iSpring · Integra Consultora</p>
+      <h1 class="cv-t">Diseño Organizacional</h1>
+      <p class="cv-s">Fundamentos</p>
+      <div class="cv-rule"></div>
+      <p class="cv-desc">Concepto · diferenciación e integración · modelos mecanicista y orgánico · tipos de departamentalización</p>
+      <div class="cv-auth">
+        <div class="cv-av">
+          <img src="/rise/assets/avatar.png" alt="KN" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=cv-av-fb>KN</span>'">
+        </div>
+        <div class="cv-meta"><strong>Karina Nuñez</strong><span>Diseño Instruccional</span></div>
+      </div>
+      <button class="cv-btn" onclick="goSlide(1)">Comenzar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- S1: OBJETIVOS (Timeline interaction) -->
+<div class="slide" id="s1">
+  <div class="card">
+    <div class="card-hdr"><span class="ch-ico">🎯</span><div><div class="ch-t">Objetivos de aprendizaje</div><div class="ch-sub">Recorré las competencias que vas a desarrollar en este módulo</div></div></div>
+    <div class="card-body">
+      <div class="obj-grid">
+        <div class="obj-card" onclick="this.classList.toggle('open')">
+          <div class="obj-n-row"><div class="obj-n">1</div><span class="obj-ttl">Concepto</span></div>
+          <div class="obj-desc">Comprender qué es el diseño organizacional y por qué es clave para el éxito de una organización.</div>
+        </div>
+        <div class="obj-card" onclick="this.classList.toggle('open')">
+          <div class="obj-n-row"><div class="obj-n">2</div><span class="obj-ttl">Diferenciación e integración</span></div>
+          <div class="obj-desc">Distinguir estos dos procesos opuestos y complementarios que sostienen el diseño organizacional.</div>
+        </div>
+        <div class="obj-card" onclick="this.classList.toggle('open')">
+          <div class="obj-n-row"><div class="obj-n">3</div><span class="obj-ttl">Modelos</span></div>
+          <div class="obj-desc">Diferenciar el modelo mecanicista del orgánico y saber cuándo conviene cada uno.</div>
+        </div>
+        <div class="obj-card" onclick="this.classList.toggle('open')">
+          <div class="obj-n-row"><div class="obj-n">4</div><span class="obj-ttl">Departamentalización</span></div>
+          <div class="obj-desc">Identificar los distintos criterios para agrupar tareas y personas en departamentos.</div>
+        </div>
+      </div>
+      <p class="obj-caption">¡Hacé click en cada objetivo para ver más! ¡Empecemos!</p>
+    </div>
+  </div>
+</div>
+
+<!-- S2: LECCIÓN 1 — Qué es el diseño -->
+<div class="slide" id="s2">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">🏛️</span><div><div class="lx-num">Lección 1</div><div class="ch-t">¿Qué es el diseño organizacional?</div></div></div>
+    <div class="card-body">
+      <p class="lede">Es el proceso de construir y adaptar continuamente la estructura de una organización para que alcance sus objetivos y estrategias. Esa estructura ordena y conecta sus áreas, personas, tareas y recursos.</p>
+      <div class="impact" style="font-style:normal;font-size:17px;">"El diseño es el ADN de la organización."</div>
+    </div>
+  </div>
+</div>
+
+<!-- S3: IDEAS CENTRALES -->
+<div class="slide" id="s3">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">💡</span><div><div class="lx-num">Lección 1</div><div class="ch-t">Ideas centrales</div></div></div>
+    <div class="card-body">
+      <div class="ideas-grid">
+        <div class="idea-card"><div class="idea-n">1</div><div class="idea-content"><h4>La estructura como esqueleto</h4><p>Contiene e integra órganos, personas, tareas, relaciones y recursos. Coordina los elementos vitales de la organización.</p></div></div>
+        <div class="idea-card"><div class="idea-n">2</div><div class="idea-content"><h4>Doble dependencia</h4><p>Depende hacia afuera de la estrategia para alcanzar objetivos, y hacia adentro de la tecnología que la organización utiliza.</p></div></div>
+        <div class="idea-card"><div class="idea-n">3</div><div class="idea-content"><h4>Cuatro variables</h4><p>Factores ambientales, dimensiones anatómicas, aspectos de las operaciones y consecuencias conductuales.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4: LECCIÓN 2 — Diferenciación e integración intro -->
+<div class="slide" id="s4">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">⚖️</span><div><div class="lx-num">Lección 2</div><div class="ch-t">Diferenciación e integración</div></div></div>
+    <div class="card-body">
+      <p class="lede">El diseño organizacional se sostiene sobre dos procesos opuestos y complementarios. Uno divide y especializa el trabajo; el otro coordina y une las partes para que la organización funcione como un todo.</p>
+      <div style="background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
+        <div style="text-align:center;padding:0 16px;">
+          <div style="font-size:28px;margin-bottom:6px;">↔️</div>
+          <div style="font-size:13px;font-weight:700;color:#1C3A4A;margin-bottom:4px;">Diferenciación</div>
+          <div style="font-size:12.5px;color:#666;">Divide y especializa</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:20px;color:#ccc;">⇄</div>
+        <div style="text-align:center;padding:0 16px;">
+          <div style="font-size:28px;margin-bottom:6px;">🔗</div>
+          <div style="font-size:13px;font-weight:700;color:#1C3A4A;margin-bottom:4px;">Integración</div>
+          <div style="font-size:12.5px;color:#666;">Coordina y une</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: DOS PROCESOS OPUESTOS -->
+<div class="slide" id="s5">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">⚖️</span><div><div class="lx-num">Lección 2</div><div class="ch-t">Dos procesos opuestos</div></div></div>
+    <div class="card-body">
+      <div class="two-col">
+        <div class="col-card">
+          <h3>Diferenciación</h3>
+          <p>Divide y especializa el trabajo.</p>
+          <ul class="col-list">
+            <li><strong>Horizontal</strong> → estructuras planas</li>
+            <li><strong>Vertical</strong> → estructuras piramidales</li>
+            <li><strong>Espacial</strong> → dispersión geográfica</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h3>Integración</h3>
+          <p>Coordina y une las partes.</p>
+          <ul class="col-list">
+            <li><strong>Vertical</strong> → jerarquía, reglas y procedimientos</li>
+            <li><strong>Horizontal</strong> → equipos y fuerzas de tarea</li>
+          </ul>
+        </div>
+      </div>
+      <div class="impact">Una especializa y separa; la otra articula y une.</div>
+    </div>
+  </div>
+</div>
+
+<!-- S6: LECCIÓN 3 — Mecanicista/Orgánico intro -->
+<div class="slide" id="s6">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">🏗️</span><div><div class="lx-num">Lección 3</div><div class="ch-t">Modelo mecanicista y modelo orgánico</div></div></div>
+    <div class="card-body">
+      <p class="lede">Según las dimensiones del diseño —formalización, centralización, jerarquía, especialización— una organización se ubica entre dos modelos opuestos, que son los extremos de muchas combinaciones posibles.</p>
+      <div style="background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:16px;display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;">
+        <div style="text-align:center;background:#fff;border:1px solid #c8d4dc;border-radius:8px;padding:12px 20px;min-width:130px;">
+          <div style="font-size:24px;margin-bottom:4px;">🔩</div>
+          <div style="font-size:13px;font-weight:700;color:#1C3A4A;">Mecanicista</div>
+          <div style="font-size:11.5px;color:#888;margin-top:2px;">Rígido · estable</div>
+        </div>
+        <div style="font-size:22px;color:#2d8c7f;font-weight:900;">↔</div>
+        <div style="text-align:center;background:#fff;border:1px solid #b8e0da;border-radius:8px;padding:12px 20px;min-width:130px;">
+          <div style="font-size:24px;margin-bottom:4px;">🌿</div>
+          <div style="font-size:13px;font-weight:700;color:#1C3A4A;">Orgánico</div>
+          <div style="font-size:11.5px;color:#888;margin-top:2px;">Flexible · dinámico</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: DOS MODELOS (tabs) -->
+<div class="slide" id="s7">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">🏗️</span><div><div class="lx-num">Lección 3</div><div class="ch-t">Dos modelos</div></div></div>
+    <div class="card-body">
+      <div class="model-cards">
+        <div class="model-card mec">
+          <h3>Mecanicista</h3>
+          <div class="model-sub">Rígido y piramidal · entornos estables</div>
+          <ul class="model-list">
+            <li>Alta formalización y centralización</li>
+            <li>Autoridad jerárquica y cadena de mando</li>
+            <li>Especialización y estandarización</li>
+            <li>Comunicación vertical y formal</li>
+          </ul>
+        </div>
+        <div class="model-card org">
+          <h3>Orgánico</h3>
+          <div class="model-sub">Flexible y circular · entornos dinámicos</div>
+          <ul class="model-list">
+            <li>Poca formalización, decisiones descentralizadas</li>
+            <li>Equipos multifuncionales</li>
+            <li>Comunicación informal y en red</li>
+            <li>Adaptable e innovadora</li>
+          </ul>
+        </div>
+      </div>
+      <div class="impact" style="font-size:14px;padding:14px 20px;margin-top:14px;">No hay un modelo mejor en abstracto: el adecuado depende del entorno, la estrategia y la tecnología de cada organización.</div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: LECCIÓN 4 — Departamentalización intro -->
+<div class="slide" id="s8">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">🗂️</span><div><div class="lx-num">Lección 4</div><div class="ch-t">Tipos de departamentalización</div></div></div>
+    <div class="card-body">
+      <p class="lede">A medida que las organizaciones crecen, agrupan tareas y personas en departamentos según distintos criterios. En la práctica, cada organización combina varios de ellos.</p>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:4px;">
+        <div style="text-align:center;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:10px 6px;">
+          <div style="font-size:20px;margin-bottom:4px;">⚙️</div>
+          <div style="font-size:11px;font-weight:700;color:#1C3A4A;">Funcional</div>
+        </div>
+        <div style="text-align:center;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:10px 6px;">
+          <div style="font-size:20px;margin-bottom:4px;">📦</div>
+          <div style="font-size:11px;font-weight:700;color:#1C3A4A;">Productos</div>
+        </div>
+        <div style="text-align:center;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:10px 6px;">
+          <div style="font-size:20px;margin-bottom:4px;">🌍</div>
+          <div style="font-size:11px;font-weight:700;color:#1C3A4A;">Geográfica</div>
+        </div>
+        <div style="text-align:center;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:10px 6px;">
+          <div style="font-size:20px;margin-bottom:4px;">🔄</div>
+          <div style="font-size:11px;font-weight:700;color:#1C3A4A;">Procesos</div>
+        </div>
+        <div style="text-align:center;background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:10px 6px;">
+          <div style="font-size:20px;margin-bottom:4px;">👥</div>
+          <div style="font-size:11px;font-weight:700;color:#1C3A4A;">Clientes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: CINCO CRITERIOS (steps) -->
+<div class="slide" id="s9">
+  <div class="card">
+    <div class="card-hdr lx"><span class="ch-ico">🗂️</span><div><div class="lx-num">Lección 4</div><div class="ch-t">Cinco criterios de departamentalización</div></div></div>
+    <div class="card-body">
+      <div class="car">
+        <div class="car-hdr" id="c-hdr">Criterio 1 de 5</div>
+        <div class="car-body"><div class="car-ttl" id="c-ttl"></div><div class="car-txt" id="c-txt"></div></div>
+        <div class="car-foot">
+          <button class="car-btn" id="cprev" onclick="cNav(-1)" disabled>‹</button>
+          <div class="car-dots" id="cdots"></div>
+          <button class="car-btn" id="cnext" onclick="cNav(1)">›</button>
+        </div>
+      </div>
+      <div style="background:#f6fcfb;border:1px solid #d5eeea;border-radius:8px;padding:14px 16px;margin-top:12px;">
+        <p style="font-size:13.5px;font-weight:700;color:#1C3A4A;margin-bottom:5px;">En la práctica</p>
+        <p style="font-size:13px;color:#444;line-height:1.6;">Ninguna organización usa un solo criterio. La departamentalización funcional se aplica en los niveles altos; se complementa con equipos por proyecto para evitar feudos. La clave está en equilibrar especialización y coordinación.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S10: EN SÍNTESIS -->
+<div class="slide" id="s10">
+  <div class="card">
+    <div class="card-hdr"><span class="ch-ico">✨</span><span class="ch-t">En síntesis</span></div>
+    <div class="card-body">
+      <p class="synth-quote">El diseño organizacional busca el equilibrio entre especializar y coordinar.</p>
+      <p class="synth-body">Ninguna organización usa un solo criterio: combina varios según su tamaño, estrategia y entorno. La clave está en equilibrar la especialización de cada área con la coordinación entre todas.</p>
+      <p class="synth-brand">Contenido desarrollado por Integra Consultora</p>
+    </div>
+  </div>
+</div>
+
+<!-- S11: QUIZ -->
+<div class="slide" id="s11">
+  <div class="card">
+    <div class="card-hdr"><span class="ch-ico">📝</span><span class="ch-t">Evaluación final</span></div>
+    <div class="card-body" id="quiz-area"></div>
+  </div>
+</div>
+
+<!-- S12: ROLE-PLAY -->
+<div class="slide" id="s12">
+  <div class="card">
+    <div class="card-hdr"><span class="ch-ico">🎭</span><span class="ch-t">Role-Play: consultora organizacional</span></div>
+    <div class="card-body">
+      <div class="scene-wrap">
+        <div class="scene-char">
+          <img id="char-img" src="assets/chars/normal.png" alt="Gerente">
+          <div class="scene-char-name">Gerente de empresa</div>
+        </div>
+        <div class="scene-content">
+          <div class="speech-bubble" id="speech-text">Hola, soy gerente de una empresa que está creciendo muy rápido. Antes éramos diez personas y ahora somos cincuenta. Siento que estamos desordenados, nadie sabe bien de quién depende. ¿Qué tipo de estructura me conviene?</div>
+          <div class="scene-replies" id="scene-replies">
+            <button class="reply-btn" onclick="chooseReply(1)"><span class="reply-ico">A</span>Contame primero sobre tu entorno: ¿es estable o cambia mucho? Según eso evaluamos si te conviene un modelo más mecanicista u orgánico.</button>
+            <button class="reply-btn" onclick="chooseReply(2)"><span class="reply-ico">B</span>Lo mejor siempre es una estructura jerárquica rígida, sin dudas.</button>
+            <button class="reply-btn" onclick="chooseReply(3)"><span class="reply-ico">C</span>No te preocupes por la estructura, eso se resuelve solo con el tiempo.</button>
+          </div>
+          <div class="scene-feedback" id="scene-fb"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S13: RESULTADO -->
+<div class="slide" id="s13">
+  <div class="card">
+    <div class="card-hdr"><span class="ch-ico">🎓</span><span class="ch-t">Módulo completado</span></div>
+    <div class="result-wrap">
+      <div class="res-circle"><span class="res-pct" id="res-pct">—</span><span class="res-lbl">Score</span></div>
+      <p class="res-msg" id="res-msg"></p>
+      <p class="res-sub" id="res-sub"></p>
+      <button class="res-replay" onclick="restartCourse()">↺ Volver a empezar</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<div id="bottombar">
+  <span class="bb-ctr" id="bbctr">Diapositiva 1 de 14</span>
+  <div class="bb-btns">
+    <button class="bb-btn bb-prev" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
+    <button class="bb-btn bb-next" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+  </div>
+</div>
+</div>
+
+<script>
+// ── CAROUSEL ──
+const STEPS=[
+  {t:'Funcional',x:'Por funciones similares: finanzas, producción, marketing, RRHH. Ventaja: economías de escala. Riesgo: convierte las áreas en "feudos".'},
+  {t:'Por productos o servicios',x:'Agrupa todo lo relacionado con cada producto o servicio, y hace a cada unidad responsable de su desempeño.'},
+  {t:'Geográfica',x:'Agrupa personas y tareas según el territorio o región que atiende la organización.'},
+  {t:'Por procesos',x:'A lo largo del flujo productivo; cada área se especializa en una fase del proceso.'},
+  {t:'Por clientes',x:'Agrupa según el tipo de cliente (damas, caballeros, niños; o empresas grandes, medianas, pequeñas).'}
+];
 let cs=0;
 function renderCar(){
-  document.getElementById('c-hdr').textContent='Tipo '+(cs+1)+' de '+STEPS.length;
+  document.getElementById('c-hdr').textContent='Criterio '+(cs+1)+' de 5';
   document.getElementById('c-ttl').textContent=STEPS[cs].t;
   document.getElementById('c-txt').textContent=STEPS[cs].x;
   document.getElementById('cprev').disabled=cs===0;
   document.getElementById('cnext').disabled=cs===STEPS.length-1;
-  const dd=document.getElementById('cdots'); dd.innerHTML='';
+  const dd=document.getElementById('cdots');dd.innerHTML='';
   STEPS.forEach((_,i)=>{const d=document.createElement('div');d.className='car-dot'+(i===cs?' on':'');d.onclick=()=>{cs=i;renderCar();};dd.appendChild(d);});
 }
 function cNav(dir){cs=Math.max(0,Math.min(STEPS.length-1,cs+dir));renderCar();}
 renderCar();
-function iTab(btn,pid){const wrap=btn.closest('.card-body');wrap.querySelectorAll('.itab').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.itab-panel').forEach(p=>p.classList.remove('on'));btn.classList.add('on');document.getElementById(pid).classList.add('on');}
+
+// ── QUIZ ──
+const QS=[
+  {q:'El diseño organizacional se define como…',opts:['Un organigrama fijo e inmutable.','El proceso de construir y adaptar continuamente la estructura para alcanzar objetivos.','La cantidad de empleados de una empresa.'],ok:1},
+  {q:'La diferenciación implica…',opts:['Dividir el trabajo y especializar órganos y personas.','Coordinar y unir las partes.','Eliminar la jerarquía.'],ok:0},
+  {q:'El modelo orgánico se caracteriza por…',opts:['Forma piramidal y rígida.','Flexibilidad, equipos multifuncionales y comunicación informal.','Alta formalización y centralización.'],ok:1},
+  {q:'La departamentalización funcional agrupa por…',opts:['Región geográfica.','Tipo de cliente.','Funciones similares (finanzas, marketing, producción, RRHH).'],ok:2},
+  {q:'El modelo mecanicista es más adecuado para…',opts:['Empresas sin estructura definida.','Entornos dinámicos y cambiantes.','Entornos estables con pocos cambios.'],ok:2}
+];
 let qCur=0,qScore=0;
+
 function renderQ(){
   const q=QS[qCur];
-  document.getElementById('quiz-area').innerHTML=`<p class="q-ctr">Pregunta ${qCur+1} de ${QS.length}</p><p class="q-text">${q.q}</p><div class="q-opts">${q.opts.map((o,i)=>`<div class="q-opt" id="qo${i}"><input type="radio" name="q" id="r${i}" value="${i}"><label for="r${i}">${o}</label></div>`).join('')}</div><div class="q-foot"><button class="sub-btn" id="sub-btn" onclick="submitQ()">Confirmar</button></div><div class="q-fb" id="q-fb"></div>`;
+  document.getElementById('quiz-area').innerHTML=`
+    <p class="q-ctr">Pregunta ${qCur+1} de ${QS.length}</p>
+    <p class="q-text">${q.q}</p>
+    <div class="q-opts">${q.opts.map((o,i)=>`<div class="q-opt" id="qo${i}"><input type="radio" name="q" id="r${i}" value="${i}"><label for="r${i}">${o}</label></div>`).join('')}</div>
+    <div class="q-foot"><button class="sub-btn" id="sub-btn" onclick="submitQ()">Confirmar</button></div>
+    <div class="q-fb" id="q-fb"></div>
+  `;
 }
+
 function submitQ(){
-  const sel=document.querySelector('input[name=q]:checked'); if(!sel)return;
-  const ans=+sel.value, ok=ans===QS[qCur].ok; if(ok)qScore++;
-  document.querySelectorAll('.q-opt').forEach((o,i)=>{o.querySelector('input').disabled=true;if(i===QS[qCur].ok)o.style.cssText='background:#e8f5e9;border-color:#81c784;';else if(i===ans&&!ok)o.style.cssText='background:#fce8e6;border-color:#e57373;';});
+  const sel=document.querySelector('input[name=q]:checked');
+  if(!sel)return;
+  const ans=+sel.value,ok=ans===QS[qCur].ok;
+  if(ok)qScore++;
+  document.querySelectorAll('.q-opt').forEach((o,i)=>{
+    o.querySelector('input').disabled=true;
+    if(i===QS[qCur].ok)o.style.cssText='background:#e8f5e9;border-color:#81c784;';
+    else if(i===ans&&!ok)o.style.cssText='background:#fce8e6;border-color:#e57373;';
+  });
   document.getElementById('sub-btn').disabled=true;
-  const fb=document.getElementById('q-fb'); fb.textContent=ok?'✓ ¡Correcto!':'✗ Respuesta incorrecta. La opción correcta está resaltada en verde.'; fb.className='q-fb show '+(ok?'ok':'bad');
-  const last=qCur===QS.length-1; setTimeout(()=>{document.querySelector('.q-foot').innerHTML=`<button class="sub-btn" onclick="nextQ()">${last?'Ver resultado →':'Siguiente pregunta →'}</button>`;},350);
+  const fb=document.getElementById('q-fb');
+  fb.textContent=ok?'✓ Correcto. Esa respuesta es la acertada.':'✗ Respuesta incorrecta. Repasá la lección y volvé a intentarlo.';
+  fb.className='q-fb show '+(ok?'ok':'bad');
+  const last=qCur===QS.length-1;
+  setTimeout(()=>{
+    document.querySelector('.q-foot').innerHTML=`<button class="sub-btn" onclick="nextQ()">${last?'Ir al Role-Play →':'Siguiente pregunta →'}</button>`;
+  },350);
 }
-function nextQ(){qCur++; if(qCur>=QS.length){showResult();}else{renderQ();}}
-function showResult(){
-  const pct=Math.round(qScore/QS.length*100);
-  document.getElementById('res-pct').textContent=pct+'%';
-  document.getElementById('res-msg').textContent=pct>=80?'¡Excelente trabajo!':pct>=60?'¡Buen trabajo, seguí!':'Revisá el módulo';
-  document.getElementById('res-sub').textContent=`Respondiste ${qScore} de ${QS.length} preguntas correctamente. ${pct>=80?'Superaste el umbral de aprobación (80%).':'Te recomendamos repasar los contenidos.'}`;
-  goSlide(13);
+
+function nextQ(){qCur++;if(qCur>=QS.length)goSlide(12);else renderQ();}
+renderQ();
+
+// ── SCENARIO ──
+const SCENES={
+  2:{emotion:'happy',text:'¡Exacto! Nunca lo había pensado así. Nuestro mercado cambia todo el tiempo, así que entiendo que necesitamos algo más flexible.',correct:true},
+  3:{emotion:'puzzled',text:'Mmm... una estructura rígida me suena a más burocracia. ¿No me va a quitar agilidad justo ahora que necesito moverme rápido?',correct:false},
+  4:{emotion:'unhappy',text:'No sé... si lo dejo pasar siento que el desorden va a empeorar. Esperaba una recomendación más concreta de tu parte.',correct:false}
+};
+const REPLY_SCENES={1:2,2:3,3:4};
+
+function chooseReply(id){
+  const scene=SCENES[REPLY_SCENES[id]];
+  document.getElementById('char-img').src='assets/chars/'+scene.emotion+'.png';
+  document.getElementById('speech-text').textContent=scene.text;
+  document.querySelectorAll('.reply-btn').forEach(b=>{b.disabled=true;b.style.opacity='.45';});
+  const fb=document.getElementById('scene-fb');
+  if(scene.correct){
+    fb.innerHTML='✓ <strong>¡Muy bien!</strong> Diagnosticar el entorno antes de recomendar una estructura es la clave del diseño organizacional efectivo. <br><button class="scene-retry" onclick="goSlide(13)" style="margin-top:10px;">Ver resultados →</button>';
+    fb.className='scene-feedback show ok';
+  } else {
+    fb.innerHTML='✗ <strong>No es la mejor respuesta.</strong> Recordá: no existe un modelo único. La estructura depende del entorno, la estrategia y la tecnología. <br><button class="scene-retry" onclick="resetScene()" style="margin-top:10px;">↺ Intentar de nuevo</button>';
+    fb.className='scene-feedback show bad';
+  }
 }
-let scId='1';
-function renderScenario(){
-  const scene=SCENES.find(s=>s.id===scId)||SCENES[0];
-  const replies=scene.replies.length?`<div class="sc-replies">${scene.replies.map((r,i)=>`<button class="sc-reply" onclick="chooseReply('${r.target}')">${r.text}</button>`).join('')}</div>`:'<p class="sc-note">Fin del role-play. Volvé atrás o reiniciá el módulo.</p>';
-  document.getElementById('scenario-area').innerHTML=`<div class="sc-wrap"><div><p style="font-size:12px;font-weight:700;color:#2d8c7f;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Simulación</p><div class="sc-speech">${scene.speech}</div>${replies}</div><div class="sc-char"><img src="/elearning/assets/characters/${scene.emotion}.png" alt="Personaje"></div></div>`;
+
+function resetScene(){
+  document.getElementById('char-img').src='assets/chars/normal.png';
+  document.getElementById('speech-text').textContent='Hola, soy gerente de una empresa que está creciendo muy rápido. Antes éramos diez personas y ahora somos cincuenta. Siento que estamos desordenados, nadie sabe bien de quién depende. ¿Qué tipo de estructura me conviene?';
+  document.querySelectorAll('.reply-btn').forEach(b=>{b.disabled=false;b.style.opacity='1';});
+  document.getElementById('scene-fb').className='scene-feedback';
 }
-function chooseReply(target){ if(!target)return; scId=target; renderScenario(); }
-renderQ(); renderScenario();
+
+// ── NAVIGATION ──
+const TOTAL=14;
 let cur=0;
-function goSlide(n){document.getElementById('s'+cur).classList.remove('active');document.getElementById('content').scrollTop=0;cur=n;document.getElementById('s'+cur).classList.add('active');updateNav();}
-function prevSlide(){if(cur>0)goSlide(cur-1);}
-function nextSlide(){if(cur<TOTAL-1&&cur!==11)goSlide(cur+1);}
+const QUIZ_SLIDE=11,SCENARIO_SLIDE=12,RESULT_SLIDE=13;
+
+function goSlide(n){
+  document.getElementById('s'+cur).classList.remove('active');
+  document.getElementById('content').scrollTop=0;
+  cur=n;
+  document.getElementById('s'+cur).classList.add('active');
+  updateNav();
+}
+function prevSlide(){if(cur>0&&cur!==RESULT_SLIDE)goSlide(cur-1);}
+function nextSlide(){if(cur<TOTAL-1&&cur!==QUIZ_SLIDE&&cur!==SCENARIO_SLIDE)goSlide(cur+1);}
+
 function updateNav(){
-  document.getElementById('prevBtn').disabled=cur===0||cur===13;
-  document.getElementById('nextBtn').disabled=cur===13||cur===11;
-  document.getElementById('nextBtn').textContent=cur===10?'Ir a la evaluación →':cur===12?'Ver resultado →':'Siguiente →';
+  const locked=cur===QUIZ_SLIDE||cur===SCENARIO_SLIDE||cur===RESULT_SLIDE;
+  document.getElementById('prevBtn').disabled=cur===0||cur===RESULT_SLIDE;
+  document.getElementById('nextBtn').disabled=locked;
+  document.getElementById('nextBtn').textContent=cur===10?'Ir a la evaluación →':'Siguiente →';
   document.getElementById('bbctr').textContent='Diapositiva '+(cur+1)+' de '+TOTAL;
   document.getElementById('tbctr').textContent=(cur+1)+' / '+TOTAL;
   document.getElementById('prog-bar').style.width=(((cur+1)/TOTAL)*100)+'%';
 }
-function restartCourse(){qCur=0;qScore=0;scId='1';renderQ();renderScenario();goSlide(0);}
+
+function showResult(){
+  const pct=Math.round(qScore/QS.length*100);
+  document.getElementById('res-pct').textContent=pct+'%';
+  document.getElementById('res-msg').textContent=pct>=80?'¡Excelente trabajo!':pct>=60?'¡Buen trabajo!':'Revisá el módulo';
+  document.getElementById('res-sub').textContent=`Respondiste ${qScore} de ${QS.length} preguntas correctamente en la evaluación. ${pct>=80?'Superaste el umbral de aprobación (80%).':'Te recomendamos repasar los contenidos.'}`;
+}
+
+function restartCourse(){qCur=0;qScore=0;renderQ();resetScene();goSlide(0);}
 updateNav();
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')nextSlide();if(e.key==='ArrowLeft'||e.key==='ArrowUp')prevSlide();});
-</script></body></html>
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')nextSlide();
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')prevSlide();
+});
+</script>
+</body>
+</html>
