@@ -186,9 +186,16 @@
     padding:11px 18px;
     background:var(--teal); color:var(--white);
     border-radius:var(--radius);
-    transition:background .18s;
+    transition:background .18s, color .18s, border-color .18s;
   }
   .demo-link:hover{ background:var(--navy); }
+  .demo-actions{ margin-top:auto; display:flex; flex-wrap:wrap; gap:10px; }
+  .demo-actions .demo-link{ margin-top:0; }
+  .demo-link.outline{
+    background:transparent; color:var(--teal);
+    border:1.5px solid var(--teal);
+  }
+  .demo-link.outline:hover{ background:var(--teal); color:var(--white); }
 
   /* featured tutor */
   .featured-tutor{ display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center; margin-bottom:56px; }
@@ -352,7 +359,10 @@
           <div class="meta">Curso · Rise 360</div>
           <h4>Diseño Organizacional — Fundamentos</h4>
           <ul class="checklist"><li>Responsive</li><li>Diseño instruccional</li><li>Interacciones</li><li>Evaluaciones</li></ul>
-          <button onclick="openCourseModal('/rise/')" class="demo-link" style="cursor:pointer;border:none;background:none;padding:0;font:inherit;">▶ Abrir demo</button>
+          <div class="demo-actions">
+            <a href="https://360.articulate.com/review/content/0b306f69-63a5-44a6-b599-8d138249f9b8/review" class="demo-link" target="_blank" rel="noopener">▶ Ver curso</a>
+            <button onclick="openCourseModal('/rise/')" class="demo-link outline" style="cursor:pointer;font:inherit;">▶ Demo local</button>
+          </div>
         </div>
       </div>
       <div class="demo-card">
@@ -367,14 +377,17 @@
           <div class="course-thumb-ov"></div>
         </div>
         <div class="demo-card-body">
-          <div class="meta">Curso · Storyline</div>
-          <h4>Desarrollado en Storyline</h4>
+          <div class="meta">Curso · Storyline 360</div>
+          <h4>Curso con Tutor IA — Diseño Organizacional</h4>
           <ul class="checklist"><li>Escenarios</li><li>Variables</li><li>Tutor IA</li><li>Evaluaciones</li></ul>
-          <a href="#" class="demo-link" onclick="openCourseModal('/storyline/');return false;">▶ Iniciar curso</a>
+          <div class="demo-actions">
+            <a href="https://360.articulate.com/review/content/77291e30-cc81-41d6-a31c-a7a768f6c275/review" class="demo-link" target="_blank" rel="noopener">▶ Ver curso</a>
+            <button onclick="openCourseModal('/storyline/')" class="demo-link outline" style="cursor:pointer;font:inherit;">▶ Demo local</button>
+          </div>
         </div>
       </div>
       <div class="demo-card">
-        <div class="frame course-thumb" onclick="openCourseModal()">
+        <div class="frame course-thumb" onclick="openCourseModal('/elearning/')">
           <span class="badge-rec">Nuevo</span>
           <div class="course-thumb-center">
             <span class="course-thumb-tag">Módulo Formativo</span>
@@ -388,7 +401,10 @@
           <div class="meta">Curso · iSpring</div>
           <h4>Desarrollado en iSpring</h4>
           <ul class="checklist"><li>Conversión PPT</li><li>Cuestionarios</li><li>Evaluaciones</li><li>Escenarios</li></ul>
-          <a href="#" class="demo-link" onclick="openCourseModal();return false;">▶ Iniciar curso</a>
+          <div class="demo-actions">
+            <a href="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" class="demo-link" target="_blank" rel="noopener">▶ Ver curso</a>
+            <button onclick="openCourseModal('/elearning/')" class="demo-link outline" style="cursor:pointer;font:inherit;">▶ Demo local</button>
+          </div>
         </div>
       </div>
     </div>
