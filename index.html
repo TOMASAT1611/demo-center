@@ -239,16 +239,15 @@
   .footer-bottom{ font-size:13.5px; color:var(--gray); }
 
   /* --- iSpring course thumbnail --- */
-  .course-thumb{ position:relative; overflow:hidden; cursor:pointer; background:linear-gradient(135deg,#1C3A4A 55%,#2D6F6B); }
-  .course-thumb-text{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:26px 22px 18px; pointer-events:none; }
-  .course-thumb-tag{ font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#4DA6A0; }
-  .course-thumb-title{ font-family:Georgia,serif; font-size:21px; color:#fff; line-height:1.2; margin-top:8px; }
-  .course-thumb-brand{ font-size:10px; color:rgba(242,239,231,.55); font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-  .course-play{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,.15); border:2px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; pointer-events:none; transition:transform .2s,background .2s; }
-  .course-play span{ color:#fff; font-size:16px; margin-left:3px; }
+  .course-thumb{ position:relative; overflow:hidden; cursor:pointer; }
+  .course-thumb-center{ display:flex; flex-direction:column; align-items:center; gap:5px; text-align:center; pointer-events:none; }
+  .course-thumb-tag{ font-size:9.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:#4DA6A0; margin-bottom:2px; }
+  .course-thumb-title{ font-family:Georgia,serif; font-size:17px; color:#fff; line-height:1.25; }
+  .course-play{ width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.16); border:1.5px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; margin-top:6px; flex:none; transition:transform .2s,background .2s; }
+  .course-play span{ color:#fff; font-size:15px; margin-left:2px; }
   .course-thumb-ov{ position:absolute; inset:0; background:rgba(0,0,0,.22); opacity:0; transition:opacity .2s; pointer-events:none; }
   .course-thumb:hover .course-thumb-ov{ opacity:1; }
-  .course-thumb:hover .course-play{ transform:translate(-50%,-50%) scale(1.12); background:rgba(255,255,255,.28); }
+  .course-thumb:hover .course-play{ transform:scale(1.12); background:rgba(255,255,255,.28); }
 
   /* --- course modal --- */
   #course-modal{ display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.88); align-items:center; justify-content:center; }
@@ -359,14 +358,12 @@
       <div class="demo-card">
         <div class="frame course-thumb" onclick="openCourseModal()">
           <span class="badge-rec">Nuevo</span>
-          <div class="course-thumb-text">
-            <div>
-              <span class="course-thumb-tag">Módulo Formativo</span>
-              <span class="course-thumb-title">Diseño<br>Organizacional</span>
-            </div>
-            <span class="course-thumb-brand">Integra Consultora</span>
+          <div class="course-thumb-center">
+            <span class="course-thumb-tag">Módulo Formativo</span>
+            <span class="course-thumb-title">Diseño<br>Organizacional</span>
+            <div class="course-play"><span>▶</span></div>
           </div>
-          <div class="course-play"><span>▶</span></div>
+          <span class="label">iSpring</span>
           <div class="course-thumb-ov"></div>
         </div>
         <div class="demo-card-body">
