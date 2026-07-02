@@ -274,6 +274,23 @@
   .course-modal-close{ position:absolute; top:-38px; right:0; background:transparent; border:none; color:#fff; font-size:26px; cursor:pointer; line-height:1; opacity:.75; transition:opacity .15s; }
   .course-modal-close:hover{ opacity:1; }
   .course-modal-inner iframe{ width:100%; height:100%; border:none; border-radius:8px; display:block; }
+  /* Miniatura vertical de infografía */
+  .frame.info-thumb{ aspect-ratio:3/4; background-size:cover; background-position:top center; cursor:pointer; }
+  .frame.info-thumb .zoom{
+    position:absolute; bottom:12px; right:12px;
+    font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--navy); background:var(--signal); padding:4px 10px; border-radius:3px;
+    opacity:0; transition:opacity .18s ease;
+  }
+  .frame.info-thumb:hover .zoom{ opacity:1; }
+  .lb-overlay{
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(28,58,74,.94); justify-content:center; align-items:flex-start;
+    overflow-y:auto; padding:40px 20px;
+  }
+  .lb-overlay.active{ display:flex; }
+  .lb-overlay img{ max-width:760px; width:100%; height:auto; border-radius:var(--radius); box-shadow:0 12px 45px rgba(0,0,0,.5); }
+  .lb-close{ position:fixed; top:16px; right:26px; color:var(--white); font-size:40px; line-height:1; cursor:pointer; font-family:'Trebuchet MS',sans-serif; z-index:10000; }
 </style>
 </head>
 <body>
@@ -283,6 +300,7 @@
     <div class="brandmark">INTEGRA <span>· Demo Center</span></div>
     <nav class="navlinks">
       <a href="#elearning">E-Learning</a>
+      <a href="#infografias">Infografías</a>
       <a href="#ia">IA Educativa</a>
       <a href="#localizacion">Localización</a>
       <a href="#audiovisual">Audiovisual</a>
@@ -416,6 +434,75 @@
             <a href="https://acc-7832.ispring.com/app/preview/2c5e16b0-6f8d-11f1-bae8-7e100f6f43e8" class="demo-link" target="_blank" rel="noopener">▶ Ver curso</a>
             <button onclick="openCourseModal('/elearning/')" class="demo-link outline" style="cursor:pointer;font:inherit;">▶ Demo local</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INFOGRAFÍAS ===================== -->
+<section class="demo-section alt" id="infografias">
+  <div class="demo-section-inner">
+    <div class="section-head">
+      <div class="tag"><span class="dot"></span>INFOGRAFÍAS</div>
+      <h2>Contenido visual que explica.</h2>
+      <p>Piezas de síntesis visual sobre educación, diseño curricular y metodología — otra forma de producción de contenido experto.</p>
+    </div>
+    <div class="card-grid">
+      <div class="demo-card">
+        <div class="frame info-thumb" style="background-image:url('REEMPLAZAR_URL_01');" onclick="abrirLB(this.style.backgroundImage.slice(5,-2))">
+          <span class="badge-rec">Marca</span>
+          <span class="zoom">Ampliar</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="meta">Metodología</div>
+          <h4>Metodología INTEGRA</h4>
+          <p class="desc">El proceso completo de diseño instruccional de INTEGRA, en seis etapas — pieza de marca propia.</p>
+          <a class="demo-link" style="cursor:pointer" onclick="abrirLB('REEMPLAZAR_URL_01')">⤢ Ver completa</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="frame info-thumb" style="background-image:url('REEMPLAZAR_URL_02');" onclick="abrirLB(this.style.backgroundImage.slice(5,-2))">
+          <span class="zoom">Ampliar</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="meta">Diseño curricular</div>
+          <h4>Decálogo — Currículum por competencia</h4>
+          <p class="desc">Diez principios del diseño curricular por competencias, con base en Perrenoud y Díaz Barriga.</p>
+          <a class="demo-link" style="cursor:pointer" onclick="abrirLB('REEMPLAZAR_URL_02')">⤢ Ver completa</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="frame info-thumb" style="background-image:url('REEMPLAZAR_URL_03');" onclick="abrirLB(this.style.backgroundImage.slice(5,-2))">
+          <span class="zoom">Ampliar</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="meta">Diseño curricular</div>
+          <h4>Transformar el currículum universitario</h4>
+          <p class="desc">Una lectura crítica del currículum como construcción política y pedagógica, con estética editorial y referencias académicas.</p>
+          <a class="demo-link" style="cursor:pointer" onclick="abrirLB('REEMPLAZAR_URL_03')">⤢ Ver completa</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="frame info-thumb" style="background-image:url('REEMPLAZAR_URL_04');" onclick="abrirLB(this.style.backgroundImage.slice(5,-2))">
+          <span class="zoom">Ampliar</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="meta">Planeamiento educativo</div>
+          <h4>Tendencias disruptivas en educación</h4>
+          <p class="desc">Planeamiento educativo, big data y ciudadanía digital en contextos de transformación.</p>
+          <a class="demo-link" style="cursor:pointer" onclick="abrirLB('REEMPLAZAR_URL_04')">⤢ Ver completa</a>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="frame info-thumb" style="background-image:url('REEMPLAZAR_URL_05');" onclick="abrirLB(this.style.backgroundImage.slice(5,-2))">
+          <span class="zoom">Ampliar</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="meta">Teoría del aprendizaje</div>
+          <h4>Paradigma conductista — Aplicaciones educativas</h4>
+          <p class="desc">Síntesis visual del modelo conductista aplicado a la enseñanza: rol docente, proceso y evaluación.</p>
+          <a class="demo-link" style="cursor:pointer" onclick="abrirLB('REEMPLAZAR_URL_05')">⤢ Ver completa</a>
         </div>
       </div>
     </div>
@@ -725,6 +812,16 @@ function closeCourseModal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCourseModal();});
+</script>
+
+<div class="lb-overlay" id="lb" onclick="cerrarLB()">
+  <span class="lb-close" onclick="cerrarLB()">&times;</span>
+  <img id="lb-img" src="" alt="Infografía ampliada">
+</div>
+<script>
+  function abrirLB(src){ if(!src)return; document.getElementById('lb-img').src=src; document.getElementById('lb').classList.add('active'); document.body.style.overflow='hidden'; }
+  function cerrarLB(){ document.getElementById('lb').classList.remove('active'); document.body.style.overflow=''; }
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrarLB();});
 </script>
 
 </body>
